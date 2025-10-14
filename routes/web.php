@@ -3,18 +3,55 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KeluargaKKController;
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
+// //route halaman dashboard
+// Route::get('/dashboard', [AdminController::class, 'index']);
+
+// //route form login
+// Route::get('/auth', [AuthController::class, 'index']);
+
+// //route form respon login
+// Route::post('/auth/login', [AuthController::class, 'login']);
+
+// //route admin template
+// Route::get('/admin', function () {
+//     return view('admin.dashboard');
+// });
+
+// Route::get('/', function () {
+//     return view('login'); // tampilkan halaman login
+// });
+
+// Route::get('/admin', function () {
+//     return view('admin.dashboard');
+// });
+
+// Route::get('/dashboard', [DashboardController::class, 'index'])-> name ('dashboard');
+
+// Route utama (http://127.0.0.1:8000)
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/admin');
 });
 
-//route halaman dashboard
-Route::get('/dashboard', [AdminController::class, 'index']);
+// Route dashboard admin
+Route::get('/admin', [DashboardController::class, 'index'])->name('admin.dashboard');
 
-//route form login
-Route::get('/auth', [AuthController::class, 'index']);
+// // Route untuk dashboard admin (http://127.0.0.1:8000/admin)
+// Route::get('/admin', function () {
+//     return view('admin.dashboard');
+// });
+Route::prefix('admin')->group(function () {
+    Route::get('/', function () {
+        return view('admin.dashboard');
+    });
 
-//route form respon login
-Route::post('/auth/login', [AuthController::class, 'login']);
+    Route::resource('keluarga_kk', KeluargaKKController::class);
+});
+
 
