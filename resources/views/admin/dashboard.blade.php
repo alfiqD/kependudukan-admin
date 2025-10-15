@@ -30,16 +30,25 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Dashboard Admin  <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">Dashboard Admin <sup>2</sup></div>
             </a>
 
             <hr class="sidebar-divider my-0">
 
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="{{ url('admin') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
+
+                <!-- Menu Data Keluarga KK -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('keluarga_kk.index') }}">
+            <i class="fas fa-users"></i>
+            <span>Data Keluarga KK</span>
+        </a>
+    </li>
+
 
             <hr class="sidebar-divider">
 
@@ -142,6 +151,8 @@
         <div id="content-wrapper" class="d-flex flex-column">
 
             <div id="content">
+
+                @yield('content')
 
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 

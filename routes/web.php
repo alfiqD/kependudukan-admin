@@ -51,6 +51,7 @@ Route::prefix('admin')->group(function () {
         return view('admin.dashboard');
     });
 
+    // cukup tulis 'keluarga_kk', jangan /admin/keluarga_kk
     Route::resource('keluarga_kk', KeluargaKKController::class);
 });
 

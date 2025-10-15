@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\KeluargaKK;
+
 use Illuminate\Http\Request;
+use App\Models\KeluargaKK;
 
 class KeluargaKKController extends Controller
 {
@@ -12,8 +13,8 @@ class KeluargaKKController extends Controller
      */
     public function index()
     {
-        $keluarga = KeluargaKK::all();
-        return view('admin.keluarga.index');
+        $keluarga = KeluargaKK::all(); // ambil semua data dari tabel keluarga_kk
+        return view('admin.keluarga.index', compact('keluarga'));
     }
 
     /**
@@ -29,16 +30,17 @@ class KeluargaKKController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'kk_nomor' => 'required|unique:keluarga_kks,kk_nomor',
-            'kepala_keluarga_warga_id' => 'required',
-            'alamat' => 'required',
-            'rt' => 'required',
-            'rw' => 'required',
+        $validated = $request->validate([
+        'kk_nomor' => 'required|unique:keluarga_kk,kk_nomor',
+        'kepala_keluarga_warga_id' => 'required',
+        'alamat' => 'required',
+        'rt' => 'required',
+        'rw' => 'required',
         ]);
 
-        KeluargaKK::create($request->all());
-        return redirect()->route('keluarga_kk.index')->with('success', 'Data KK berhasil ditambahkan!');
+    KeluargaKK::create($validated);
+
+    return redirect()->route('keluarga_kk.index')->with('success', 'Data KK berhasil ditambahkan!');
     }
 
     /**
@@ -54,8 +56,7 @@ class KeluargaKKController extends Controller
      */
     public function edit(KeluargaKK $keluargaKK)
     {
-        $keluarga = KeluargaKK::findOrFail($id);
-        return view('admin.keluarga.edit', compact('keluarga'));
+        return view('admin.keluarga.edit', ['keluarga' => $keluargaKK]);
     }
 
     /**
