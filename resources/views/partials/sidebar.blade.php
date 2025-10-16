@@ -26,6 +26,15 @@
         Data
     </div>
 
+    <!-- Nav Item - Data Warga -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('warga.index') }}">
+            <i class="fas fa-id-card"></i>
+            <span>Data Warga</span>
+        </a>
+    </li>
+
+
     <!-- Nav Item - Data KK -->
     <li class="nav-item">
         <a class="nav-link" href="{{ route('keluarga_kk.index') }}">
@@ -64,8 +73,7 @@
             <i class="fas fa-wrench"></i>
             <span>Utilities</span>
         </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-            data-parent="#accordionSidebar">
+        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Custom Utilities:</h6>
                 <a class="collapse-item" href="#">Colors</a>

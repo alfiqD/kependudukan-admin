@@ -28,23 +28,25 @@
                         </thead>
                         <tbody>
                             @foreach ($keluarga as $index => $data)
-<tr>
-    <td>{{ $index + 1 }}</td> {{-- Ini ganti ID database jadi nomor urut tampilan --}}
-    <td>{{ $data->kk_nomor }}</td>
-    <td>{{ $data->kepala_keluarga_warga_id }}</td>
-    <td>{{ $data->alamat }}</td>
-    <td>{{ $data->rt }}</td>
-    <td>{{ $data->rw }}</td>
-    <td>
-        <a href="{{ route('keluarga_kk.edit', $data) }}" class="btn btn-warning btn-sm">Edit</a>
-        <form action="{{ route('keluarga_kk.destroy', $data) }}" method="POST" class="d-inline delete-form">
-            @csrf
-            @method('DELETE')
-            <button type="button" class="btn btn-danger btn-sm btn-delete">Hapus</button>
-        </form>
-    </td>
-</tr>
-@endforeach
+                                <tr>
+                                    <td>{{ $index + 1 }}</td> {{-- Ini ganti ID database jadi nomor urut tampilan --}}
+                                    <td>{{ $data->kk_nomor }}</td>
+                                    <td>{{ $data->kepala_keluarga_warga_id }}</td>
+                                    <td>{{ $data->alamat }}</td>
+                                    <td>{{ $data->rt }}</td>
+                                    <td>{{ $data->rw }}</td>
+                                    <td>
+                                        <a href="{{ route('keluarga_kk.edit', $data) }}"
+                                            class="btn btn-warning btn-sm">Edit</a>
+                                        <form action="{{ route('keluarga_kk.destroy', $data) }}" method="POST"
+                                            class="d-inline delete-form">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="button" class="btn btn-danger btn-sm btn-delete">Hapus</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
 
                         </tbody>
                     </table>
@@ -98,7 +100,6 @@
             });
         </script>
     @endif
-
 @endsection
 
 {{-- pop up delete datanya

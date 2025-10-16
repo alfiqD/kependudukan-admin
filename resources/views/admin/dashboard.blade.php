@@ -43,13 +43,30 @@
                     <span>Dashboard</span></a>
             </li>
 
-                <!-- Menu Data Keluarga KK -->
-    <li class="nav-item">
-        <a class="nav-link" href="{{ route('keluarga_kk.index') }}">
-            <i class="fas fa-users"></i>
-            <span>Data Kartu Keluarga </span>
-        </a>
-    </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+
+            <div class="sidebar-heading">
+                Data
+            </div>
+
+
+            <!-- Nav Item - Data Warga -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('warga.index') }}">
+                    <i class="fas fa-id-card"></i>
+                    <span>Data Warga</span>
+                </a>
+            </li>
+
+            <!-- Menu Data Keluarga KK -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('keluarga_kk.index') }}">
+                    <i class="fas fa-users"></i>
+                    <span>Data Kartu Keluarga </span>
+                </a>
+            </li>
 
 
             <hr class="sidebar-divider">

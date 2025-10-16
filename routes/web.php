@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KeluargaKKController;
+use App\Http\Controllers\WargaController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -53,9 +54,11 @@ Route::prefix('admin')->group(function () {
 
     // cukup tulis 'keluarga_kk', jangan /admin/keluarga_kk
     Route::resource('keluarga_kk', KeluargaKKController::class);
+    Route::resource('warga', WargaController::class);
 });
 
-Route::put('admin/keluarga_kk/{keluarga_kk}', [KeluargaKkController::class, 'update'])->name('keluarga_kk.update');
+
+
 
 
 
