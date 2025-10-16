@@ -11,6 +11,9 @@ class KeluargaKK extends Model
 
     protected $table = 'keluarga_kk';
     protected $primaryKey = 'kk_id';
+    public $incrementing = true;
+    protected $keyType = 'int';
+
     protected $fillable = [
         'kk_nomor',
         'kepala_keluarga_warga_id',
@@ -18,4 +21,5 @@ class KeluargaKK extends Model
         'rt',
         'rw',
     ];
+
 }

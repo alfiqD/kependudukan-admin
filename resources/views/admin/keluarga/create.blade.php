@@ -1,4 +1,4 @@
-@extends('admin.dashboard')
+@extends('layouts.admin')
 
 @section('content')
 <style>
@@ -28,7 +28,7 @@
 </style>
 
 <div class="container-fluid">
-    <h1 class="h3 mb-4 text-gray-800">Tambah Data Keluarga KK</h1>
+    <h1 class="h3 mb-4 text-gray-800">Tambah Data Kartu Keluarga</h1>
 
     <div class="card shadow mb-4">
         <div class="card-body">
@@ -38,7 +38,7 @@
                     {{-- Kolom kiri --}}
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="kk_nomor">Nomor KK</label>
+                            <label for="kk_nomor">Nomor Kartu Keluarga</label>
                             <input type="text" name="kk_nomor" id="kk_nomor" class="form-control" placeholder="Masukkan Nomor KK" required>
                         </div>
 

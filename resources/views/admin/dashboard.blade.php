@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>Pusat Kependudukan-Admin</title>
 
     <link href="{{ asset('assets/admin/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link
@@ -27,10 +27,12 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+                <div class="sidebar-brand-icon">
+
+                    {{-- Logo Rumah --}}
+                    <i class="fas fa-home"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Dashboard Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">Pusat Data Keluarga</div>
             </a>
 
             <hr class="sidebar-divider my-0">
@@ -45,7 +47,7 @@
     <li class="nav-item">
         <a class="nav-link" href="{{ route('keluarga_kk.index') }}">
             <i class="fas fa-users"></i>
-            <span>Data Keluarga KK</span>
+            <span>Data Kartu Keluarga </span>
         </a>
     </li>
 
@@ -56,10 +58,10 @@
                 Interface
             </div>
 
-            <!-- Pesan sukses-->
+            {{-- <!-- Pesan sukses-->
             @if (session('success'))
                 <div class="alert alert-success">{{ session('success') }}</div>
-            @endif
+            @endif --}}
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"

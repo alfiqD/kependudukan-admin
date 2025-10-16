@@ -55,4 +55,7 @@ Route::prefix('admin')->group(function () {
     Route::resource('keluarga_kk', KeluargaKKController::class);
 });
 
+Route::put('admin/keluarga_kk/{keluarga_kk}', [KeluargaKkController::class, 'update'])->name('keluarga_kk.update');
+
+
 
