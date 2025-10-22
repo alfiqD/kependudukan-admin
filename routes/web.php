@@ -15,11 +15,11 @@ use App\Http\Controllers\WargaController;
 // //route halaman dashboard
 // Route::get('/dashboard', [AdminController::class, 'index']);
 
-// //route form login
-// Route::get('/auth', [AuthController::class, 'index']);
+//route form login
+Route::get('/auth', [AuthController::class, 'index']);
 
 // //route form respon login
-// Route::post('/auth/login', [AuthController::class, 'login']);
+Route::post('/auth/login', [AuthController::class, 'login']);
 
 // //route admin template
 // Route::get('/admin', function () {

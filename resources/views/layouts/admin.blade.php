@@ -10,6 +10,7 @@
 
     <!-- SB Admin 2 CSS -->
     <link href="{{ asset('assets/admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/admin/css/custom-admin.css') }}" rel="stylesheet">
 </head>
 
 <body id="page-top">

@@ -35,7 +35,7 @@
             <a href="/auth" class="btn btn-outline-danger">
                 Kembali ke Login
             </a>
-            <a href="/dashboard" class="btn btn-primary">
+            <a href="/admin" class="btn btn-primary">
                 Masuk ke Dashboard
             </a>
         </div>

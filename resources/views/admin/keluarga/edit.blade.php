@@ -1,32 +1,6 @@
-@extends('layouts.admin')
+@extends('layouts.admin.app')
 
 @section('content')
-<style>
-    /* Warna label biru */
-    label {
-        color: #005bbc; /* biru bootstrap */
-        font-weight: 600;
-    }
-
-    /* Warna teks input lebih terang */
-    input::placeholder,
-    textarea::placeholder {
-        color: #dcdcdc !important; /* abu muda mendekati putih */
-        opacity: 1;
-    }
-
-    input, textarea {
-        color: #f8f9fa; /* teks di input juga agak putih */
-        background-color: #2e2e2e; /* sedikit gelap biar kontras */
-        border: 1px solid #6c757d;
-    }
-
-    input:focus, textarea:focus {
-        border-color: #007bff;
-        box-shadow: 0 0 5px rgba(0, 123, 255, 0.4);
-    }
-</style>
-
 <div class="container-fluid">
     <h1 class="h3 mb-4 text-gray-800">Edit Data Kartu Keluarga</h1>
 

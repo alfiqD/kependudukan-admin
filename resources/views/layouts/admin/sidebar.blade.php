@@ -1,4 +1,3 @@
-{{-- Start sidebar --}}
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
@@ -34,6 +33,14 @@
             <span>Data Warga</span>
         </a>
     </li>
+
+    <!-- Nav Item - Data User -->
+            <li class="nav-item">
+                <a class="nav-link" >
+                    <i class="fas fa-user"></i>
+                    <span>Data User</span>
+                </a>
+            </li>
 
     <!-- Menu Data Keluarga KK -->
     <li class="nav-item">
@@ -141,4 +148,3 @@
     </div>
 
 </ul>
-{{-- end sidebar --}}
