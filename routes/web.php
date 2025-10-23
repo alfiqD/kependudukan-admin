@@ -39,7 +39,7 @@ Route::post('/auth/login', [AuthController::class, 'login']);
 
 // Route utama (http://127.0.0.1:8000)
 Route::get('/', function () {
-    return redirect('/admin');
+    return redirect('/auth'); //login dulu baru dashboard kalau mau dashboard dulu ganti /admin
 });
 
 // Route dashboard admin
@@ -53,6 +53,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/', function () {
         return view('admin.dashboard');
     });
+
 
     // cukup tulis 'keluarga_kk', jangan /admin/keluarga_kk
     Route::resource('keluarga_kk', KeluargaKKController::class);
