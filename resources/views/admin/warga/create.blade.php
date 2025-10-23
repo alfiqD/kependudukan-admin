@@ -1,37 +1,6 @@
 @extends('layouts.admin.app')
 
 @section('content')
-    <style>
-        /* Warna label biru */
-        label {
-            color: #005bbc;
-            font-weight: 600;
-        }
-
-        /* Warna teks input lebih terang */
-        input::placeholder,
-        select,
-        textarea::placeholder {
-            color: #dcdcdc !important;
-            opacity: 1;
-        }
-
-        input,
-        select,
-        textarea {
-            color: #f8f9fa;
-            background-color: #2e2e2e;
-            border: 1px solid #6c757d;
-        }
-
-        input:focus,
-        select:focus,
-        textarea:focus {
-            border-color: #007bff;
-            box-shadow: 0 0 5px rgba(0, 123, 255, 0.4);
-        }
-    </style>
-
     <div class="container-fluid">
         <h1 class="h3 mb-4 text-gray-800">Tambah Data Warga</h1>
 
@@ -114,33 +83,4 @@
             </div>
         </div>
     </div>
-
-    <style>
-        select.form-control {
-            background-color: #fff !important;
-            color: #141414 !important;
-            border: 1px solid #ced4da !important;
-            border-radius: 8px;
-            padding: 0.5rem 0.75rem;
-            height: auto;
-            box-shadow: none;
-            transition: border-color 0.2s ease-in-out;
-        }
-
-        select.form-control:focus {
-            border-color: #005bbc !important;
-            /* warna biru saat fokus */
-            box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.25);
-        }
-
-        .form-select:focus {
-  border-color: #005bbc; /* biru Bootstrap */
-box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
-}
-
-
-        option {
-            color: #333 !important;
-        }
-    </style>
 @endsection

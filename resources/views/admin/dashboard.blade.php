@@ -65,7 +65,7 @@
 
             <!-- Nav Item - Data User -->
             <li class="nav-item">
-                <a class="nav-link" >
+                <a class="nav-link" href="{{ route('users.index') }}" >
                     <i class="fas fa-user"></i>
                     <span>Data User</span>
                 </a>

@@ -41,7 +41,7 @@ class KeluargaKKController extends Controller
 
     KeluargaKK::create($validated);
 
-    return redirect()->route('keluarga_kk.index')->with('success', 'Data berhasil disimpan.');
+    return redirect()->route('keluarga_kk.index')->with('success', 'Data berhasil ditambahkan.');
     }
 
     /**
@@ -87,7 +87,7 @@ class KeluargaKKController extends Controller
     ]);
 
     // Redirect balik dengan pesan sukses
-    return redirect()->route('keluarga_kk.index')->with('success', 'Data berhasil diupdate!');
+    return redirect()->route('keluarga_kk.index')->with('success', 'Data berhasil diperbarui.');
 }
 
     /**

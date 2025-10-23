@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KeluargaKKController;
 use App\Http\Controllers\WargaController;
+use App\Http\Controllers\UserController;
 
 
 // Route::get('/', function () {
@@ -56,6 +57,8 @@ Route::prefix('admin')->group(function () {
     // cukup tulis 'keluarga_kk', jangan /admin/keluarga_kk
     Route::resource('keluarga_kk', KeluargaKKController::class);
     Route::resource('warga', WargaController::class);
+    Route::resource('users', UserController::class);
+
 });
 
 
