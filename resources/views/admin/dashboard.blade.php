@@ -134,9 +134,8 @@
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
                                     <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button"
-                                            id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                                            aria-expanded="false">
+                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
@@ -352,6 +351,32 @@
                 {{-- end main content --}}
 
             </div>
+
+            <!-- Modal Selamat Datang Minimalis -->
+<div class="modal fade" id="welcomeModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="border: 3px solid #0d6efd; border-radius: 12px;">
+            <div class="modal-body text-center py-4">
+                <p class="mb-0" style="font-size: 1.2rem;">
+                    Selamat Datang di Dashboard Admin Kependudukan
+                </p>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <!-- Pastikan pakai data-bs-dismiss untuk Bootstrap 5 -->
+                <button type="button" class="btn btn-primary px-4" data-bs-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Tampilkan modal otomatis saat halaman load
+    document.addEventListener('DOMContentLoaded', function() {
+        var welcomeModal = new bootstrap.Modal(document.getElementById('welcomeModal'));
+        welcomeModal.show();
+    });
+</script>
+
 
             {{-- start footer --}}
             @include('layouts.admin.footer')

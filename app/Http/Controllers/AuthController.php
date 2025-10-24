@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+
 
 class AuthController extends Controller
 {
@@ -19,7 +22,7 @@ class AuthController extends Controller
     {
         // Validasi input
         $request->validate([
-            'username' => 'required',
+            'username' => 'required|string|max:255',
             'email' => 'required|email',
             'password' => [
                 'required',
@@ -35,6 +38,18 @@ class AuthController extends Controller
             'password.regex' => 'Password harus mengandung huruf kapital!'
         ]);
 
+        // Cek user di database
+    $user = User::where('name', $request->username) // pakai name, bukan username
+            ->where('email', $request->email)
+            ->first();
+
+    if (!$user || !Hash::check($request->password, $user->password)) {
+        // Kalau gagal, kembali ke login dengan pesan error
+        return redirect('/auth')
+                ->withErrors(['login' => 'Username, email, atau password salah!'])
+                ->withInput($request->only('username', 'email'));
+    }
+
         // Kalau valid, tampilkan halaman success
         return view('auth.success', [
             'username' => $request->username,
@@ -42,7 +57,6 @@ class AuthController extends Controller
             'password' => $request->password
         ]);
     }
-
 
     // Tampilkan form registrasi
     public function showRegisterForm()
@@ -54,8 +68,7 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $request->validate([
-            // 'name' => 'required',
-            'username' => 'required|min:3',
+            'name' => 'required|min:3',
             'email' => 'required|email',
             'password' => [
                 'required',
@@ -65,8 +78,8 @@ class AuthController extends Controller
             ]
         ], [
             //'name.required' => 'Nama lengkap wajib diisi!',
-            'username.required' => 'Username wajib diisi!',
-            'username.min' => 'Username minimal 3 karakter!',
+            'name.required' => 'Nama wajib diisi!',
+            'name.min' => 'Nama minimal 3 karakter!',
             'email.required' => 'Email wajib diisi!',
             'email.email' => 'Format email tidak valid!',
             'password.required' => 'Password wajib diisi!',
@@ -75,10 +88,16 @@ class AuthController extends Controller
             'password.confirmed' => 'Konfirmasi password tidak cocok!'
         ]);
 
+        $user = User::create([
+        'name' => $request->name,
+        'email' => $request->email,
+        'password' => Hash::make($request->password) // hash password
+    ]);
+
         // Simulasi berhasil daftar (belum simpan ke DB)
         return view('auth.register-success', [
             'title' => 'Registrasi Berhasil',
-            'username' => $request->username,
+            'name' => $request->name,
             'email' => $request->email,
             'password' => $request->password
         ]);
