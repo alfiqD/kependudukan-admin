@@ -23,7 +23,6 @@
 
             <!-- Main Content -->
             <div id="content">
-
                 {{-- Topbar --}}
                 @include('layouts.admin.header')
 
@@ -32,10 +31,12 @@
                     @yield('content')
                 </div>
 
+                {{-- Footer --}}
+                @include('layouts.admin.footer')
             </div>
 
             {{-- Footer --}}
-            @include('layouts.admin.footer')
+            {{-- //@include('layouts.admin.footer') --}}
 
         </div>
         <!-- End of Content Wrapper -->

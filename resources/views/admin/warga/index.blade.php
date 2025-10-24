@@ -35,9 +35,9 @@
                                     <td>{{ $data->no_ktp }}</td>
                                     <td>{{ $data->nama }}</td>
                                     <td>
-                                        @if ($data->jenis_kelamin == 'L')
+                                        @if ($data->jenis_kelamin == 'Laki-laki')
                                             Laki-laki
-                                        @elseif ($data->jenis_kelamin == 'P')
+                                        @elseif ($data->jenis_kelamin == 'Perempuan')
                                             Perempuan
                                         @else
                                             -
