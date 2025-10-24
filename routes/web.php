@@ -18,7 +18,6 @@ use App\Http\Controllers\UserController;
 
 //route form login
 Route::get('/auth', [AuthController::class, 'index']);
-
 // //route form respon login
 Route::post('/auth/login', [AuthController::class, 'login']);
 
@@ -41,6 +40,10 @@ Route::post('/auth/login', [AuthController::class, 'login']);
 Route::get('/', function () {
     return redirect('/auth'); //login dulu baru dashboard kalau mau dashboard dulu ganti /admin
 });
+
+Route::get('/register', [AuthController::class, 'showRegisterForm']);
+Route::post('/auth/register', [AuthController::class, 'register']);
+
 
 // Route dashboard admin
 Route::get('/admin', [DashboardController::class, 'index'])->name('admin.dashboard');

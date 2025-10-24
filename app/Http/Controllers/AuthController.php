@@ -43,6 +43,47 @@ class AuthController extends Controller
         ]);
     }
 
+
+    // Tampilkan form registrasi
+    public function showRegisterForm()
+    {
+        return view('auth.register-form');
+    }
+
+    // Proses registrasi
+    public function register(Request $request)
+    {
+        $request->validate([
+            // 'name' => 'required',
+            'username' => 'required|min:3',
+            'email' => 'required|email',
+            'password' => [
+                'required',
+                'min:3',
+                'regex:/[A-Z]/',
+                'confirmed'
+            ]
+        ], [
+            //'name.required' => 'Nama lengkap wajib diisi!',
+            'username.required' => 'Username wajib diisi!',
+            'username.min' => 'Username minimal 3 karakter!',
+            'email.required' => 'Email wajib diisi!',
+            'email.email' => 'Format email tidak valid!',
+            'password.required' => 'Password wajib diisi!',
+            'password.min' => 'Password minimal 3 karakter!',
+            'password.regex' => 'Password harus mengandung huruf kapital!',
+            'password.confirmed' => 'Konfirmasi password tidak cocok!'
+        ]);
+
+        // Simulasi berhasil daftar (belum simpan ke DB)
+        return view('auth.register-success', [
+            'title' => 'Registrasi Berhasil',
+            'username' => $request->username,
+            'email' => $request->email,
+            'password' => $request->password
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      */

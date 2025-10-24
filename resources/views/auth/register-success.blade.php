@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Login Berhasil</title>
+    <title>{{ $title ?? 'Registrasi Berhasil' }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -19,12 +19,10 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
             background-color: #fff;
             text-align: center;
-            max-width: 500px;
-            width: 100%;
         }
         .success-icon {
             font-size: 60px;
-            color: #0d6efd;
+            color: #0d6efd; /* Ubah centang jadi biru */
             margin-bottom: 20px;
             animation: bounce 1s;
         }
@@ -33,40 +31,27 @@
             40% {transform: translateY(-15px);}
             60% {transform: translateY(-7px);}
         }
-        .list-group-item {
-            font-size: 16px;
-            padding: 12px 18px;
-        }
-        .btn-group {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
     </style>
 </head>
 <body>
 
-<div class="card shadow-lg">
+<div class="card w-50">
     <div class="success-icon">
         <i class="fas fa-check-circle"></i>
     </div>
-    <h3 class="mb-3">Login Berhasil!</h3>
-    <p>Selamat datang <b>{{ $username }}</b>, berikut data login kamu:</p>
+    <h3 class="mb-3">{{ $title ?? 'Akun Berhasil Dibuat!' }}</h3>
 
-    <ul class="list-group mb-4 mt-3">
-        <li class="list-group-item">👤 Username: {{ $username }}</li>
-        <li class="list-group-item">📧 Email: {{ $email }}</li>
-        <li class="list-group-item">🔑 Password: {{ $password }}</li>
-    </ul>
+    @if(isset($username))
+        <p><strong>Username:</strong> {{ $username }}</p>
+    @endif
 
-    <div class="btn-group">
-        <a href="/auth" class="btn btn-primary">
-            <i class="fas fa-sign-in-alt me-2"></i> Kembali ke Login
-        </a>
-        <a href="/admin" class="btn btn-primary">
-            <i class="fas fa-tachometer-alt me-2"></i> Masuk ke Dashboard
-        </a>
-    </div>
+    @if(isset($email))
+        <p><strong>Email:</strong> {{ $email }}</p>
+    @endif
+
+    <a href="/auth" class="btn btn-primary btn-lg mt-3">
+        <i class="fas fa-sign-in-alt me-2"></i> Kembali ke Login
+    </a>
 </div>
 
 </body>
