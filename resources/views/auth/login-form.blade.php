@@ -92,6 +92,8 @@
         <p>Belum punya akun? <a href="/register">Registrasi di sini</a></p>
     </div>
 </div>
+@include('layouts.admin.whatsapp')
+
 
 </body>
 </html>

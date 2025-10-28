@@ -84,6 +84,6 @@
         </a>
     </div>
 </div>
-
+@include('layouts.admin.whatsapp')
 </body>
 </html>

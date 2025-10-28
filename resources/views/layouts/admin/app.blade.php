@@ -49,6 +49,8 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
+@include('layouts..admin.whatsapp')
+
     <!-- Scripts -->
     @include('layouts.admin.js')
 
