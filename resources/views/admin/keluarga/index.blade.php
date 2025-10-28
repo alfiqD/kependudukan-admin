@@ -9,7 +9,11 @@
             <div class="alert alert-success">{{ session('success') }}</div>
         @endif
 
-        <a href="{{ route('keluarga_kk.create') }}" class="btn btn-primary mb-3">+ Tambah Data</a>
+        <!-- Tombol Tambah Data -->
+        <a href="{{ route('keluarga_kk.create') }}" class="btn btn-primary mb-3 d-inline-flex align-items-center gap-1">
+            <ion-icon name="add-circle-outline" class="me-1"></ion-icon>
+            Tambah Data
+        </a>
 
         <div class="card shadow mb-4">
             <div class="card-body">
@@ -35,7 +39,28 @@
                                     <td>{{ $data->alamat }}</td>
                                     <td>{{ $data->rt }}</td>
                                     <td>{{ $data->rw }}</td>
-                                    <td> <a href="{{ route('keluarga_kk.edit', $data) }}" class="btn btn-warning btn-sm">Edit</a> <form action="{{ route('keluarga_kk.destroy', $data) }}" method="POST" class="d-inline delete-form"> @csrf @method('DELETE') <button type="button" class="btn btn-danger btn-sm btn-delete">Hapus</button> </form> </td>
+                                    <!-- Tombol Edit & Hapus di tabel -->
+                                    <td>
+                                        <!-- Tombol Edit -->
+                                        <a href="{{ route('keluarga_kk.edit', $data) }}"
+                                            class="btn btn-warning btn-sm d-inline-flex align-items-center gap-1">
+                                            <ion-icon name="create-outline" class="me-1"></ion-icon>
+                                            Edit
+                                        </a>
+
+                                        <!-- Tombol Hapus -->
+                                        <form action="{{ route('keluarga_kk.destroy', $data) }}" method="POST"
+                                            class="d-inline delete-form">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="button"
+                                                class="btn btn-danger btn-sm btn-delete d-inline-flex align-items-center gap-1">
+                                                <ion-icon name="trash-outline" class="me-1"></ion-icon>
+                                                Hapus
+                                            </button>
+                                        </form>
+                                    </td>
+
 
                                 </tr>
                             @endforeach

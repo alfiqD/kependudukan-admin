@@ -9,7 +9,12 @@
             <div class="alert alert-success">{{ session('success') }}</div>
         @endif
 
-        <a href="{{ route('users.create') }}" class="btn btn-primary mb-3">+ Tambah User</a>
+        <!-- Tombol Tambah Data -->
+        <a href="{{ route('users.create') }}" class="btn btn-primary mb-3 d-inline-flex align-items-center gap-1">
+            <ion-icon name="add-circle-outline" class="me-1"></ion-icon>
+            Tambah Data
+        </a>
+
 
         <div class="card shadow mb-4">
             <div class="card-body">
@@ -37,14 +42,26 @@
                                     </td>
 
                                     <td>
-                                        <a href="{{ route('users.edit', $user) }}" class="btn btn-warning btn-sm">Edit</a>
+                                        <!-- Tombol Edit -->
+                                        <a href="{{ route('users.edit', $user) }}"
+                                            class="btn btn-warning btn-sm d-inline-flex align-items-center gap-1">
+                                            <ion-icon name="create-outline" class="me-1"></ion-icon>
+                                            Edit
+                                        </a>
+
+                                        <!-- Tombol Hapus -->
                                         <form action="{{ route('users.destroy', $user) }}" method="POST"
                                             class="d-inline delete-form">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="button" class="btn btn-danger btn-sm btn-delete">Hapus</button>
+                                            <button type="button"
+                                                class="btn btn-danger btn-sm btn-delete d-inline-flex align-items-center gap-1">
+                                                <ion-icon name="trash-outline" class="me-1"></ion-icon>
+                                                Hapus
+                                            </button>
                                         </form>
                                     </td>
+
                                 </tr>
                             @endforeach
 

@@ -48,14 +48,26 @@
                                     <td>{{ $data->telp }}</td>
                                     <td>{{ $data->email }}</td>
                                     <td>
-                                        <a href="{{ route('warga.edit', $data) }}" class="btn btn-warning btn-sm">Edit</a>
+                                        <!-- Tombol Edit -->
+                                        <a href="{{ route('warga.edit', $data) }}"
+                                            class="btn btn-warning btn-sm d-inline-flex align-items-center gap-1">
+                                            <ion-icon name="create-outline" class="me-1"></ion-icon>
+                                            Edit
+                                        </a>
+
+                                        <!-- Tombol Hapus -->
                                         <form action="{{ route('warga.destroy', $data) }}" method="POST"
                                             class="d-inline delete-form">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="button" class="btn btn-danger btn-sm btn-delete">Hapus</button>
+                                            <button type="button"
+                                                class="btn btn-danger btn-sm btn-delete d-inline-flex align-items-center gap-1">
+                                                <ion-icon name="trash-outline" class="me-1"></ion-icon>
+                                                Hapus
+                                            </button>
                                         </form>
                                     </td>
+
                                 </tr>
                             @endforeach
 
