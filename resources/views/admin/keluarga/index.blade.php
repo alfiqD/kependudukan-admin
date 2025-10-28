@@ -35,16 +35,8 @@
                                     <td>{{ $data->alamat }}</td>
                                     <td>{{ $data->rt }}</td>
                                     <td>{{ $data->rw }}</td>
-                                    <td>
-                                        <a href="{{ route('keluarga_kk.edit', $data) }}"
-                                            class="btn btn-warning btn-sm">Edit</a>
-                                        <form action="{{ route('keluarga_kk.destroy', $data) }}" method="POST"
-                                            class="d-inline delete-form">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="button" class="btn btn-danger btn-sm btn-delete">Hapus</button>
-                                        </form>
-                                    </td>
+                                    <td> <a href="{{ route('keluarga_kk.edit', $data) }}" class="btn btn-warning btn-sm">Edit</a> <form action="{{ route('keluarga_kk.destroy', $data) }}" method="POST" class="d-inline delete-form"> @csrf @method('DELETE') <button type="button" class="btn btn-danger btn-sm btn-delete">Hapus</button> </form> </td>
+
                                 </tr>
                             @endforeach
 
