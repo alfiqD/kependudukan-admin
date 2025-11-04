@@ -54,7 +54,7 @@ Route::get('/admin', [DashboardController::class, 'index'])->name('admin.dashboa
 // });
 Route::prefix('admin')->group(function () {
     Route::get('/', function () {
-        return view('admin.dashboard');
+        return view('dashboard');
     });
 
 
@@ -62,7 +62,6 @@ Route::prefix('admin')->group(function () {
     Route::resource('keluarga_kk', KeluargaKKController::class);
     Route::resource('warga', WargaController::class);
     Route::resource('users', UserController::class);
-
 });
 
 

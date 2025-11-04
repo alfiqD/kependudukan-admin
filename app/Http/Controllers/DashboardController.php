@@ -11,7 +11,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard'); // memanggil resources/views/dashboard.blade.php
+        return view('dashboard'); // memanggil resources/views/dashboard.blade.php
     }
 
     /**

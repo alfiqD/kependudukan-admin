@@ -14,7 +14,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::orderBy('id', 'asc')->paginate(10);
-    return view('admin.user.index', compact('users'));
+    return view('pages.user.index', compact('users'));
     }
 
     /**
@@ -22,7 +22,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.user.create');
+        return view('pages.user.create');
     }
 
     /**
@@ -61,7 +61,7 @@ class UserController extends Controller
     public function edit(string $id)
     {
         $user = User::findOrFail($id);
-        return view('admin.user.edit', compact('user'));
+        return view('pages.user.edit', compact('user'));
 
     }
 

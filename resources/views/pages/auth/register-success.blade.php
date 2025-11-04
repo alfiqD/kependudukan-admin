@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Login Berhasil</title>
+    <title>{{ $title ?? 'Registrasi Berhasil' }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
     <style>
@@ -34,20 +34,9 @@
             40% {transform: translateY(-15px);}
             60% {transform: translateY(-7px);}
         }
-        .list-group-item {
+        p {
             font-size: 16px;
-            padding: 12px 18px;
-            border: none;
-            border-bottom: 1px solid #eee;
-        }
-        .list-group-item:last-child {
-            border-bottom: none;
-        }
-        .btn-group {
-            display: flex;
-            justify-content: space-between;
-            gap: 10px;
-            margin-top: 20px;
+            margin: 0.5rem 0;
         }
         .btn-primary {
             background-color: #4A90E2;
@@ -58,7 +47,6 @@
             border-color: #357ABD;
         }
     </style>
-
 </head>
 <body>
 
@@ -66,24 +54,20 @@
     <div class="success-icon">
         <i class="bi bi-check-circle-fill"></i>
     </div>
-    <h3 class="mb-3">Login Berhasil!</h3>
-    <p>Selamat datang <b>{{ $username }}</b>, berikut data login kamu:</p>
+    <h3 class="mb-3">{{ $title ?? 'Akun Berhasil Dibuat!' }}</h3>
 
-    <ul class="list-group mb-4 mt-3">
-        <li class="list-group-item">👤 Username: {{ $username }}</li>
-        <li class="list-group-item">📧 Email: {{ $email }}</li>
-        {{-- <li class="list-group-item">🔑 Password: {{ $password }}</li> --}}
-    </ul>
+    @if(isset($name))
+        <p><strong>Nama Lengkap:</strong> {{ $name }}</p>
+    @endif
 
-    <div class="btn-group">
-        <a href="/auth" class="btn btn-primary w-50">
-            <i class="bi bi-arrow-left-circle me-2"></i> Kembali ke Login
-        </a>
-        <a href="/admin" class="btn btn-primary w-50">
-            <i class="bi bi-speedometer2 me-2"></i> Masuk ke Dashboard
-        </a>
-    </div>
+    @if(isset($email))
+        <p><strong>Email:</strong> {{ $email }}</p>
+    @endif
+
+    <a href="/auth" class="btn btn-primary btn-lg mt-3">
+        <i class="bi bi-arrow-left-circle me-2"></i> Kembali ke Login
+    </a>
 </div>
-@include('layouts.admin.whatsapp')
+
 </body>
 </html>

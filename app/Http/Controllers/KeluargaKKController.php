@@ -14,7 +14,7 @@ class KeluargaKKController extends Controller
     public function index()
     {
         $keluarga = KeluargaKK::all(); // ambil semua data dari tabel keluarga_kk
-        return view('admin.keluarga.index', compact('keluarga'));
+        return view('pages.keluarga.index', compact('keluarga'));
     }
 
     /**
@@ -22,7 +22,7 @@ class KeluargaKKController extends Controller
      */
     public function create()
     {
-        return view('admin.keluarga.create');
+        return view('pages.keluarga.create');
     }
 
     /**
@@ -58,7 +58,7 @@ class KeluargaKKController extends Controller
     public function edit($id)
 {
     $keluargaKK = KeluargaKK::findOrFail($id);
-    return view('admin.keluarga.edit', compact('keluargaKK'));
+    return view('pages.keluarga.edit', compact('keluargaKK'));
 }
 
     /**

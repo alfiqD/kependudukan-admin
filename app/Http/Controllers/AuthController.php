@@ -14,7 +14,7 @@ class AuthController extends Controller
      */
     public function index()
     {
-        return view('auth.login-form');
+        return view('pages.auth.login-form');
     }
 
      // Proses login
@@ -51,7 +51,7 @@ class AuthController extends Controller
     }
 
         // Kalau valid, tampilkan halaman success
-        return view('auth.success', [
+        return view('pages.auth.success', [
             'username' => $request->username,
             'email' => $request->email,
             'password' => $request->password
@@ -61,7 +61,7 @@ class AuthController extends Controller
     // Tampilkan form registrasi
     public function showRegisterForm()
     {
-        return view('auth.register-form');
+        return view('pages.auth.register-form');
     }
 
     // Proses registrasi
@@ -95,7 +95,7 @@ class AuthController extends Controller
     ]);
 
         // Simulasi berhasil daftar (belum simpan ke DB)
-        return view('auth.register-success', [
+        return view('pages.auth.register-success', [
             'title' => 'Registrasi Berhasil',
             'name' => $request->name,
             'email' => $request->email,

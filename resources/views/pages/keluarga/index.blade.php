@@ -121,7 +121,7 @@
 
 
 
-{{-- pop up delete datanya
+{{-- pop up delete datanya --}}
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const deleteButtons = document.querySelectorAll('.btn-delete');
@@ -165,4 +165,4 @@
                 showConfirmButton: false
             });
         </script>
-    @endif --}}
+    @endif

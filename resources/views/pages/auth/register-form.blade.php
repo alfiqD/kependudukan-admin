@@ -97,6 +97,6 @@
         <p>Sudah punya akun? <a href="/auth">Masuk di sini</a></p>
     </div>
 </div>
-@include('layouts.admin.whatsapp')
+
 </body>
 </html>
