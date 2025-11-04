@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,31 @@
 
     {{-- start css --}}
     @include('layouts.admin.css')
+    <style>
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 80px;
+            /* posisi lebih ke atas */
+            right: 25px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            background-color: #1ebe5a;
+            transform: scale(1.1);
+        }
+    </style>
 
 </head>
 
@@ -49,10 +75,14 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-@include('layouts..admin.whatsapp')
+    <a href="https://wa.me/6281234567890?text=Halo%20Admin,%20saya%20ingin%20bertanya%20tentang%20Pusat%20Data%20Keluarga."
+        target="_blank" class="whatsapp-float" title="Hubungi kami via WhatsApp">
+        <ion-icon name="logo-whatsapp"></ion-icon>
+    </a>
 
     <!-- Scripts -->
     @include('layouts.admin.js')
 
 </body>
+
 </html>
