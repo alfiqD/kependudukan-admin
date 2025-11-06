@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <title>Login Sistem Kependudukan</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{-- logo di nama ats url --}}
+    <link rel="icon" href="/assets/admin/img/favicon32.png">
+    <link rel="shortcut icon" href="/assets/admin/img/favicon32.png">
 
   <!-- Bootstrap & Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">

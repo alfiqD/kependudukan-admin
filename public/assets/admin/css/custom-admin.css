@@ -58,3 +58,13 @@ select.form-control:focus {
 option {
     color: #333 !important;
 }
+
+/* Mengatur ukuran ikon kustom di sidebar */
+.sidebar-custom-icon {
+  width: 50px;   /* Coba atur lebarnya 20px */
+  height: auto;  /* Biarkan tinggi otomatis */
+
+  /* Mungkin perlu sedikit penyesuaian posisi vertikal */
+  /* Hapus tanda komentar (/*) jika posisinya terlalu ke atas */
+    margin-top: -2px;
+}

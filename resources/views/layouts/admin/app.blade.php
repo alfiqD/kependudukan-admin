@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Admin</title>
 
-    <link rel="icon" href="/assets/admin/img/Logo-Kependudukan.png">
-    <link rel="shortcut icon" href="/assets/admin/img/Logo-Kependudukan.png">
+    <link rel="icon" href="/assets/admin/img/favicon32.png">
+    <link rel="shortcut icon" href="/assets/admin/img/favicon32.png">
 
     {{-- start css --}}
     @include('layouts.admin.css')
