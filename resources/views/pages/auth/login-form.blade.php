@@ -111,7 +111,24 @@
         width: 100%;
       }
     }
+
+    /* Aturan untuk logo di halaman login */
+.logo-login {
+  width: 190px; /* Atur lebar sesuai keinginan Anda. Contoh: 180px */
+  height: auto; /* Biarkan tinggi menyesuaikan secara otomatis agar gambar tidak gepeng */
+  margin-bottom: -10px; /* Opsional: tambahkan sedikit jarak di bawah logo */
+}
+
+/* Jika Anda ingin logo berada di tengah */
+.text-center img.logo-login { /* Pastikan selektornya spesifik jika ada .text-center di atasnya */
+  display: block; /* Agar margin auto bisa bekerja */
+  margin-left: auto;
+  margin-right: auto;
+}
   </style>
+
+
+
 </head>
 
 <body>
@@ -120,14 +137,14 @@
     <!-- Bagian kiri -->
     <div class="left-section">
       <img src="https://cdn-icons-png.flaticon.com/512/906/906175.png" alt="Ilustrasi Penduduk">
-      <h4>Pusat Data Keluarga</h4>
+      <h4>Pusat Data Kependudukan</h4>
       <p>Kelola data warga dan keluarga desa dengan mudah, cepat, dan aman.</p>
     </div>
 
     <!-- Bagian kanan -->
     <div class="right-section">
       <div class="text-center mb-4">
-        <i class="bi bi-people-fill icon-header"></i>
+        <img src="/assets/admin/img/logo-kependudukan2.jpg" alt="Logo Sistem Kependudukan" class="logo-login">
         <h3 class="fw-semibold">Login Sistem Kependudukan</h3>
       </div>
 

@@ -6,7 +6,7 @@
             {{-- Logo Rumah --}}
             <i class="fas fa-home"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">Pusat Data Keluarga</div>
+        <div class="sidebar-brand-text mx-3">Pusat Data Kependudukan</div>
     </a>
 
     <hr class="sidebar-divider my-0">
@@ -57,7 +57,7 @@
 
     <!-- Divider -->
     <hr class="sidebar-divider">
-    <div class="sidebar-heading">
+
 
         <div class="sidebar-heading">
             AUTENTIKASI
@@ -67,12 +67,12 @@
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                 aria-expanded="true" aria-controls="collapsePages">
                 <i class="fas fa-fw fa-folder"></i>
-                <span>LOGIN & REGISTER</span>
+                <span>LOGOUT & REGISTER</span>
             </a>
             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Login & Register</h6>
-                    <a class="collapse-item" href="/auth">Login</a>
+                    <h6 class="collapse-header">Logout & Register</h6>
+                    <a class="collapse-item" href="/auth">Logout</a>
                     <a class="collapse-item" href="/register">Register</a>
                 </div>
             </div>
