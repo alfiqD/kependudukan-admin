@@ -7,7 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KeluargaKKController;
 use App\Http\Controllers\WargaController;
 use App\Http\Controllers\UserController;
-
+use App\Http\Controllers\AnggotaKeluargaController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -62,7 +62,12 @@ Route::prefix('admin')->group(function () {
     Route::resource('keluarga_kk', KeluargaKKController::class);
     Route::resource('warga', WargaController::class);
     Route::resource('users', UserController::class);
+    Route::resource('anggota_keluarga', AnggotaKeluargaController::class);
+
 });
+
+
+
 
 
 

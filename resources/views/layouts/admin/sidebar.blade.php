@@ -55,6 +55,13 @@
         </a>
     </li>
 
+    <li class="nav-item">
+    <a class="nav-link" href="{{ route('anggota_keluarga.index') }}">
+        <i class="fas fa-users"></i>
+        <span>Data Anggota Keluarga </span>
+    </a>
+</li>
+
     <!-- Divider -->
     <hr class="sidebar-divider">
 

@@ -9,7 +9,10 @@
             <div class="alert alert-success">{{ session('success') }}</div>
         @endif
 
-        <a href="{{ route('warga.create') }}" class="btn btn-primary mb-3">+ Tambah Data</a>
+        <a href="{{ route('warga.create') }}" class="btn btn-primary mb-3 d-inline-flex align-items-center gap-1">
+            <ion-icon name="add-circle-outline" class="me-1"></ion-icon>
+            Tambah Data
+        </a>
 
         <div class="card shadow mb-4">
             <div class="card-body">
