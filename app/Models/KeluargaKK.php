@@ -22,4 +22,10 @@ class KeluargaKK extends Model
         'rw',
     ];
 
+    // ✅ Tambahkan relasi ke model Warga
+    public function kepalaKeluarga()
+    {
+        return $this->belongsTo(Warga::class, 'kepala_keluarga_warga_id', 'warga_id');
+    }
+
 }

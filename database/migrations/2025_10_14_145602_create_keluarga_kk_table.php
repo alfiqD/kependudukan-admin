@@ -14,7 +14,10 @@ return new class extends Migration
         Schema::create('keluarga_kk', function (Blueprint $table) {
             $table->id('kk_id');
             $table->string('kk_nomor')->unique();
-            $table->string('kepala_keluarga_warga_id');
+            $table->unsignedBigInteger('kepala_keluarga_warga_id');
+            $table->foreign('kepala_keluarga_warga_id')
+                ->references('warga_id')->on('warga')
+                ->onDelete('cascade');;
             $table->string('alamat');
             $table->string('rt');
             $table->string('rw');

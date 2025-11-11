@@ -35,7 +35,7 @@
                                 <tr>
                                     <td>{{ $index + 1 }}</td> {{-- Ini ganti ID database jadi nomor urut tampilan --}}
                                     <td>{{ $data->kk_nomor }}</td>
-                                    <td>{{ $data->kepala_keluarga_warga_id }}</td>
+                                    <td>{{ $data->kepalaKeluarga->nama ?? '-' }}</td>
                                     <td>{{ $data->alamat }}</td>
                                     <td>{{ $data->rt }}</td>
                                     <td>{{ $data->rw }}</td>

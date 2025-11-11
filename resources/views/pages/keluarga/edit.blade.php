@@ -21,10 +21,17 @@
                         </div>
 
                         <div class="form-group mt-3">
-                            <label for="kepala_keluarga_warga_id">Nama Kepala Keluarga</label>
-                            <input type="text" name="kepala_keluarga_warga_id" id="kepala_keluarga_warga_id" class="form-control"
-                                value="{{ old('kepala_keluarga_warga_id', $keluargaKK->kepala_keluarga_warga_id) }}" placeholder="Masukkan Nama Kepala Keluarga" required>
-                        </div>
+    <label for="kepala_keluarga_warga_id">Nama Kepala Keluarga</label>
+    <select name="kepala_keluarga_warga_id" id="kepala_keluarga_warga_id" class="form-control" required>
+        <option value="">-- Pilih Kepala Keluarga --</option>
+        @foreach($warga as $item)
+            <option value="{{ $item->warga_id }}"
+                {{ old('kepala_keluarga_warga_id', $keluargaKK->kepala_keluarga_warga_id) == $item->warga_id ? 'selected' : '' }}>
+                {{ $item->nama }}
+            </option>
+        @endforeach
+    </select>
+</div>
 
                         <div class="form-group mt-3">
                             <label for="alamat">Alamat</label>

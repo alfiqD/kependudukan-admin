@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\Warga;
 use Illuminate\Http\Request;
 use App\Models\KeluargaKK;
 
@@ -22,7 +22,8 @@ class KeluargaKKController extends Controller
      */
     public function create()
     {
-        return view('pages.keluarga.create');
+         $warga = Warga::all();  // ambil semua warga untuk pilihan kepala keluarga
+        return view('pages.keluarga.create' , compact('warga'));
     }
 
     /**
@@ -58,7 +59,8 @@ class KeluargaKKController extends Controller
     public function edit($id)
 {
     $keluargaKK = KeluargaKK::findOrFail($id);
-    return view('pages.keluarga.edit', compact('keluargaKK'));
+    $warga = Warga::all();
+    return view('pages.keluarga.edit', compact('keluargaKK', 'warga'));
 }
 
     /**
