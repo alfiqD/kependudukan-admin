@@ -45,52 +45,52 @@
     <hr class="sidebar-divider">
 
     <div class="sidebar-heading">
-    Kependudukan
+        Kependudukan
     </div>
     <!-- Menu Data Keluarga KK -->
     <li class="nav-item">
         <a class="nav-link" href="{{ route('keluarga_kk.index') }}">
-            <i class="fas fa-users"></i>
+            <i class="fas fa-address-card"></i>
             <span>Data Kartu Keluarga </span>
         </a>
     </li>
 
     <li class="nav-item">
-    <a class="nav-link" href="{{ route('anggota_keluarga.index') }}">
-        <i class="fas fa-users"></i>
-        <span>Data Anggota Keluarga </span>
-    </a>
-</li>
+        <a class="nav-link" href="{{ route('anggota_keluarga.index') }}">
+            <i class="fas fa-users"></i>
+            <span>Data Anggota Keluarga </span>
+        </a>
+    </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider">
 
 
-        <div class="sidebar-heading">
-            AUTENTIKASI
-        </div>
+    <div class="sidebar-heading">
+        AUTENTIKASI
+    </div>
 
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                aria-expanded="true" aria-controls="collapsePages">
-                <i class="fas fa-fw fa-folder"></i>
-                <span>LOGOUT & REGISTER</span>
-            </a>
-            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Logout & Register</h6>
-                    <a class="collapse-item" href="/auth">Logout</a>
-                    <a class="collapse-item" href="/register">Register</a>
-                </div>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+            aria-expanded="true" aria-controls="collapsePages">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>LOGOUT & REGISTER</span>
+        </a>
+        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Logout & Register</h6>
+                <a class="collapse-item" href="/auth">Logout</a>
+                <a class="collapse-item" href="/register">Register</a>
             </div>
-        </li>
-
-
-        <hr class="sidebar-divider d-none d-md-block">
-
-        <div class="text-center d-none d-md-inline">
-            <button class="rounded-circle border-0" id="sidebarToggle"></button>
         </div>
+    </li>
+
+
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
 
 
 
