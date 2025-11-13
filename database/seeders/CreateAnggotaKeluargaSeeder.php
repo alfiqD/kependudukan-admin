@@ -41,3 +41,5 @@ class CreateAnggotaKeluargaSeeder extends Seeder
         }
     }
 }
+
+
