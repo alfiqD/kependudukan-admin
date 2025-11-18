@@ -11,11 +11,44 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        $users = User::orderBy('id', 'asc')->paginate(10);
-    return view('pages.user.index', compact('users'));
+    public function index(Request $request)
+{
+    $search = $request->input('search');
+    $filter = $request->input('filter');
+
+    $query = User::orderBy('id', 'asc');
+
+    // 🔎 Search berdasarkan NAME saja
+    if ($search) {
+        $query->where('name', 'like', '%' . $search . '%');
     }
+
+    // 🔽 Filter domain email
+    if ($filter) {
+        if ($filter == 'gmail') {
+            $query->where('email', 'like', '%@gmail.%');
+        } elseif ($filter == 'yahoo') {
+            $query->where('email', 'like', '%@yahoo.%');
+        } elseif ($filter == 'outlook') {
+            $query->where('email', 'like', '%@outlook.%');
+        } elseif ($filter == 'lainnya') {
+            $query->where(function ($q) {
+                $q->where('email', 'not like', '%@gmail.%')
+                    ->where('email', 'not like', '%@yahoo.%')
+                    ->where('email', 'not like', '%@outlook.%');
+            });
+        }
+    }
+
+    // 📌 Pagination 10 data
+    $users = $query->paginate(10);
+
+    // Agar search & filter tetap ketika pindah halaman
+    $users->appends($request->all());
+
+    return view('pages.user.index', compact('users', 'search', 'filter'));
+}
+
 
     /**
      * Show the form for creating a new resource.

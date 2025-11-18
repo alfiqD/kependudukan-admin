@@ -19,6 +19,40 @@
         <div class="card shadow mb-4">
             <div class="card-body">
                 <div class="table-responsive">
+
+                    <form method="GET" action="{{ route('users.index') }}" class="d-flex justify-content-between mb-3">
+                        {{-- SEARCH --}}
+                        <div class="input-group input-group-sm" style="width: 260px;">
+                            <input type="text" name="search" class="form-control" placeholder="Cari nama..."
+                                value="{{ request('search') }}" style="height: 38px; border-radius: 5px;">
+                            <button class="btn btn-outline-secondary" type="submit" style="height: 38px;">
+                                <i class="bi bi-search fs-5"></i>
+                            </button>
+
+                            @if (request('search') || request('filter'))
+                                <a href="{{ route('users.index') }}" class="btn btn-outline-secondary"
+                                    style="height: 38px;">
+                                    <i class="bi bi-x-lg fs-5"></i>
+                                </a>
+                            @endif
+                        </div>
+
+                        {{-- FILTER EMAIL --}}
+                        <select name="filter" class="form-select form-select-sm"
+                            style="width: 150px; border-radius: 6px; background: #f8f9fa; color: #000;"
+                            onchange="this.form.submit()">
+
+                            <option value="">Filter Email</option>
+                            <option value="gmail" {{ request('filter') == 'gmail' ? 'selected' : '' }}>Gmail</option>
+                            <option value="yahoo" {{ request('filter') == 'yahoo' ? 'selected' : '' }}>Yahoo</option>
+                            <option value="outlook" {{ request('filter') == 'outlook' ? 'selected' : '' }}>Outlook</option>
+                            <option value="lainnya" {{ request('filter') == 'lainnya' ? 'selected' : '' }}>Lainnya</option>
+                        </select>
+
+
+                    </form>
+
+
                     <table class="table table-bordered">
                         <thead class="thead-light">
                             <tr>
@@ -73,10 +107,8 @@
                             @endif
                         </tbody>
                     </table>
-
-                    {{-- Pagination --}}
-                    <div class="mt-3">
-                        {{ $users->links() }}
+                    <div class="d-flex justify-content-center mt-3">
+                        {{ $users->links('pagination::bootstrap-4') }}
                     </div>
                 </div>
             </div>
