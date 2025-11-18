@@ -17,6 +17,36 @@
         <div class="card shadow mb-4">
             <div class="card-body">
                 <div class="table-responsive">
+
+                    <form method="GET" action="{{ route('warga.index') }}" class="d-flex justify-content-between mb-3">
+                        {{-- SEARCH --}}
+                        <div class="input-group input-group-sm" style="width: 260px;">
+                            <input type="text" name="search" class="form-control" placeholder="Cari nama..."
+                                value="{{ request('search') }}" style="height: 38px; border-radius: 5px;">
+                            <button class="btn btn-outline-secondary" type="submit" style="height: 38px;">
+                                <i class="bi bi-search fs-5"></i>
+                            </button>
+                            @if (request('search') || request('filter'))
+                                <a href="{{ route('warga.index') }}" class="btn btn-outline-secondary"
+                                    style="height: 38px;">
+                                    <i class="bi bi-x-lg fs-5"></i>
+                                </a>
+                            @endif
+                        </div>
+                        {{-- FILTER EMAIL --}}
+                        <select name="jenis_kelamin" class="form-select form-select-sm"
+                            style="width: 150px; border-radius: 6px; background: #f8f9fa; color: #000;"
+                            onchange="this.form.submit()">
+                            <option value="">All</option>
+                            <option value="Laki-laki" {{ request('jenis_kelamin') == 'Laki-laki' ? 'selected' : '' }}>
+                                Laki-laki
+                            </option>
+                            <option value="Perempuan" {{ request('jenis_kelamin') == 'Perempuan' ? 'selected' : '' }}>
+                                Perempuan
+                            </option>
+                        </select>
+                    </form>
+
                     <table class="table table-bordered">
                         <thead class="thead-light">
                             <tr>
@@ -81,6 +111,9 @@
                             @endif
                         </tbody>
                     </table>
+                    <div class="d-flex justify-content-center mt-3">
+                        {{ $warga->links('pagination::bootstrap-4') }}
+                    </div>
                 </div>
             </div>
         </div>

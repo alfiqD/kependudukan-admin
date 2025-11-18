@@ -10,11 +10,18 @@ class WargaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        $warga = Warga::all();
-        return view('pages.warga.index', compact('warga'));
-    }
+    public function index(Request $request)
+{
+    $filterable = ['jenis_kelamin'];     // kolom yang boleh difilter
+    $searchable = ['nama'];       // kolom yang bisa dicari
+
+    $warga = Warga::filter($request, $filterable)
+                ->search($request, $searchable)
+                ->paginate(10)
+                ->withQueryString();
+
+    return view('pages.warga.index', compact('warga'));
+}
 
     /**
      * Show the form for creating a new resource.
