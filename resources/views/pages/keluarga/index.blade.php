@@ -18,6 +18,59 @@
         <div class="card shadow mb-4">
             <div class="card-body">
                 <div class="table-responsive">
+
+                    <form method="GET" action="{{ route('keluarga_kk.index') }}" class="d-flex flex-column flex-md-row justify-content-between mb-3 gap-2">
+
+    {{-- SEARCH INPUT --}}
+    <div class="input-group input-group-sm" style="width: 100%; max-width: 300px;">
+        {{-- Simpan nilai filter saat searching --}}
+        @if(request('rt')) <input type="hidden" name="rt" value="{{ request('rt') }}"> @endif
+        @if(request('rw')) <input type="hidden" name="rw" value="{{ request('rw') }}"> @endif
+
+        <input type="text" name="search" class="form-control" placeholder="Cari No KK / Nama Kepala..."
+            value="{{ request('search') }}" style="height: 38px; border-radius: 5px 0 0 5px;">
+
+        <button class="btn btn-outline-secondary" type="submit" style="height: 38px;">
+            <i class="bi bi-search fs-5"></i>
+        </button>
+
+        @if (request('search') || request('rt') || request('rw'))
+            <a href="{{ route('keluarga_kk.index') }}" class="btn btn-outline-secondary d-flex align-items-center"
+                style="height: 38px;">
+                <i class="bi bi-x-lg"></i>
+            </a>
+        @endif
+    </div>
+
+    {{-- FILTER GROUP (RT & RW) --}}
+    <div class="d-flex gap-2">
+        {{-- Simpan nilai search saat filtering --}}
+        @if(request('search')) <input type="hidden" name="search" value="{{ request('search') }}"> @endif
+
+        {{-- FILTER RT --}}
+        <select name="rt" class="form-select form-select-sm"
+            style="width: 100px; height: 38px; border-radius: 6px; background: #f8f9fa;"
+            onchange="this.form.submit()">
+            <option value="">- RT -</option>
+            <option value="1" {{ request('rt') == '1' ? 'selected' : '' }}>1</option>
+            <option value="2" {{ request('rt') == '2' ? 'selected' : '' }}>2</option>
+            <option value="3" {{ request('rt') == '3' ? 'selected' : '' }}>3</option>
+            <option value="4" {{ request('rt') == '4' ? 'selected' : '' }}>4</option>
+        </select>
+
+        {{-- FILTER RW --}}
+        <select name="rw" class="form-select form-select-sm"
+            style="width: 100px; height: 38px; border-radius: 6px; background: #f8f9fa;"
+            onchange="this.form.submit()">
+            <option value="">- RW -</option>
+            <option value="1" {{ request('rw') == '1' ? 'selected' : '' }}>1</option>
+            <option value="2" {{ request('rw') == '2' ? 'selected' : '' }}>2</option>
+            <option value="3" {{ request('rt') == '3' ? 'selected' : '' }}>3</option>
+            <option value="4" {{ request('rt') == '4' ? 'selected' : '' }}>4</option>
+        </select>
+    </div>
+</form>
+
                     <table class="table table-bordered">
                         <thead class="thead-light">
                             <tr>

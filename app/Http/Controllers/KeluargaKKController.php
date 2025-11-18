@@ -11,9 +11,17 @@ class KeluargaKKController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $keluarga = KeluargaKK::all(); // ambil semua data dari tabel keluarga_kk
+        $filterable = ['rt', 'rw'];
+
+
+        $keluarga = KeluargaKK::with('kepalaKeluarga')
+                ->filter($request, $filterable)
+                ->search($request)
+                ->paginate(10)
+                ->withQueryString();
+
         return view('pages.keluarga.index', compact('keluarga'));
     }
 
@@ -22,8 +30,9 @@ class KeluargaKKController extends Controller
      */
     public function create()
     {
-         $warga = Warga::all();  // ambil semua warga untuk pilihan kepala keluarga
+        $warga = Warga::all();  // ambil semua warga untuk pilihan kepala keluarga
         return view('pages.keluarga.create' , compact('warga'));
+
     }
 
     /**
