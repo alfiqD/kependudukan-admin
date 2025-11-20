@@ -18,6 +18,56 @@
         <div class="card shadow mb-4">
             <div class="card-body">
                 <div class="table-responsive">
+
+                    <form method="GET" action="{{ route('anggota_keluarga.index') }}"
+    class="d-flex flex-column flex-md-row justify-content-between mb-3 gap-2">
+
+    {{-- SEARCH --}}
+    <div class="input-group input-group-sm" style="width:100%; max-width:260px;">
+        {{-- simpan filter saat searching --}}
+        @if (request('hubungan'))
+            <input type="hidden" name="hubungan" value="{{ request('hubungan') }}">
+        @endif
+
+        <input type="text" name="search" class="form-control"
+            placeholder="Cari ID Anggota..." value="{{ request('search') }}"
+            style="height:38px; border-radius:5px 0 0 5px;">
+
+        <button class="btn btn-outline-secondary" type="submit" style="height:38px;">
+            <i class="bi bi-search fs-6"></i>
+        </button>
+
+        @if (request('search') || request('hubungan'))
+            <a href="{{ route('anggota_keluarga.index') }}"
+                class="btn btn-outline-secondary d-flex align-items-center" style="height:38px;">
+                <i class="bi bi-x-lg"></i>
+            </a>
+        @endif
+    </div>
+
+    {{-- FILTER HUBUNGAN --}}
+    <div class="d-flex gap-2">
+        {{-- simpan search saat filtering --}}
+        @if (request('search'))
+            <input type="hidden" name="search" value="{{ request('search') }}">
+        @endif
+
+        <select name="hubungan" class="form-select form-select-sm"
+            style="width: 150px; height:38px; border-radius:6px; background:#f8f9fa;"
+            onchange="this.form.submit()">
+
+            <option value="">- Hubungan -</option>
+            <option value="Kepala Keluarga" {{ request('hubungan')=='Kepala Keluarga'?'selected':'' }}>Kepala Keluarga</option>
+            <option value="Istri" {{ request('hubungan')=='Istri'?'selected':'' }}>Istri</option>
+            <option value="Anak" {{ request('hubungan')=='Anak'?'selected':'' }}>Anak</option>
+            <option value="Lainnya" {{ request('hubungan')=='Lainnya'?'selected':'' }}>Lainnya</option>
+        </select>
+    </div>
+
+</form>
+
+
+
                     <table class="table table-bordered">
                         <thead class="thead-light">
                             <tr>
@@ -66,8 +116,10 @@
                                 </tr>
                             @endforeach
                         </tbody>
-
                     </table>
+                    <div class="d-flex justify-content-center mt-3">
+                        {{ $anggota->links('pagination::bootstrap-4') }}
+                    </div>
                 </div>
             </div>
         </div>

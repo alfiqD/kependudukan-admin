@@ -9,11 +9,17 @@ use App\Models\Warga;
 
 class AnggotaKeluargaController extends Controller
 {
-    public function index()
-    {
-        $anggota = AnggotaKeluarga::with(['kk', 'warga'])->get();
-        return view('pages.anggota_keluarga.index', compact('anggota'));
-    }
+    public function index(Request $request)
+{
+    $anggota = AnggotaKeluarga::with(['kk', 'warga'])
+        ->filter($request)
+        ->search($request)
+        ->paginate(10)
+        ->withQueryString();
+
+    return view('pages.anggota_keluarga.index', compact('anggota'));
+}
+
 
     public function create()
     {
