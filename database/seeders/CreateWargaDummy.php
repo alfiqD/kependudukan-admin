@@ -15,7 +15,7 @@ class CreateWargaDummy extends Seeder
     {
         $faker = Faker::create('id_ID'); // gunakan lokal Indonesia
 
-        foreach (range(1, 20) as $index) {
+        foreach (range(1, 300) as $index) {
             DB::table('warga')->insert([
                 'no_ktp' => $faker->unique()->nik(),
                 'nama' => $faker->name(),

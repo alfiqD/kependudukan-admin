@@ -13,11 +13,20 @@ class CreateFirstUser extends Seeder
      */
     public function run(): void
     {
-        User::create([
-            'name' => 'Alfiq Debriliant',
-            'email' => 'admin@gmail.com',
-            'password' => Hash::make('Admin1'),
-        ]);
+        // Generate 120 user dummy
+        foreach (range(1, 100) as $i) {
+            User::create([
+                'name' => 'User ' . $i,
+                'email' => 'user' . $i . '@gmail.com',
+                'password' => Hash::make('password'),
+            ]);
+        }
+
+        // User admin (opsional)
+        // User::create([
+        //     'name' => 'Alfiq Debriliant',
+        //     'email' => 'admin@gmail.com',
+        //     'password' => Hash::make('Admin1'),
+        // ]);
     }
 }
-

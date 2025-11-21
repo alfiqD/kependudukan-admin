@@ -14,7 +14,7 @@ class CreateKeluargaKKSeeder extends Seeder
         $faker = Faker::create('id_ID');
 
         // Ambil 7 warga acak tanpa duplikat untuk dijadikan kepala keluarga
-        $wargaList = Warga::inRandomOrder()->take(7)->get();
+        $wargaList = Warga::inRandomOrder()->take(100)->get();
 
         foreach ($wargaList as $warga) {
             DB::table('keluarga_kk')->insert([
