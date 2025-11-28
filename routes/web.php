@@ -8,6 +8,7 @@ use App\Http\Controllers\KeluargaKKController;
 use App\Http\Controllers\WargaController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AnggotaKeluargaController;
+use App\Http\Controllers\PeristiwaKelahiranController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -63,6 +64,9 @@ Route::prefix('admin')->group(function () {
     Route::resource('warga', WargaController::class);
     Route::resource('users', UserController::class);
     Route::resource('anggota_keluarga', AnggotaKeluargaController::class);
+    Route::resource('peristiwa_kelahiran', PeristiwaKelahiranController::class);
+    Route::delete('/media/delete/{media_id}', [PeristiwaKelahiranController::class, 'deleteMedia'])
+        ->name('media.delete');
 
 });
 

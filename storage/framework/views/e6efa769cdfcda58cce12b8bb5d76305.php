@@ -1,0 +1,90 @@
+<?php $__env->startSection('content'); ?>
+<div class="container-fluid">
+    <h1 class="h3 mb-4 text-gray-800">Tambah Peristiwa Kelahiran</h1>
+
+    
+    <?php if($errors->any()): ?>
+        <div class="alert alert-danger">
+            <strong>Terjadi kesalahan:</strong>
+            <ul>
+                <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $e): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <li><?php echo e($e); ?></li>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            </ul>
+        </div>
+    <?php endif; ?>
+
+    <div class="card shadow mb-4">
+        <div class="card-body">
+
+            <form action="<?php echo e(route('peristiwa_kelahiran.store')); ?>" method="POST" enctype="multipart/form-data">
+                <?php echo csrf_field(); ?>
+
+                
+                <div class="mb-3">
+                    <label class="form-label">Nama Bayi</label>
+                    <select name="warga_id" class="form-select" required>
+                        <option value="">-- Pilih Anak --</option>
+                        <?php $__currentLoopData = $anakList; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $anak): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <option value="<?php echo e($anak->warga_id); ?>"><?php echo e($anak->nama); ?></option>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </select>
+                </div>
+
+                
+                <div class="mb-3">
+                    <label class="form-label">Nama Ayah</label>
+                    <select name="ayah_warga_id" class="form-select" required>
+                        <option value="">-- Pilih Ayah --</option>
+                        <?php $__currentLoopData = $ayahList; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ayah): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <option value="<?php echo e($ayah->warga_id); ?>"><?php echo e($ayah->nama); ?></option>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </select>
+                </div>
+
+                
+                <div class="mb-3">
+                    <label class="form-label">Nama Ibu</label>
+                    <select name="ibu_warga_id" class="form-select" required>
+                        <option value="">-- Pilih Ibu --</option>
+                        <?php $__currentLoopData = $ibuList; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ibu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <option value="<?php echo e($ibu->warga_id); ?>"><?php echo e($ibu->nama); ?></option>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </select>
+                </div>
+
+                
+                <div class="mb-3">
+                    <label class="form-label">Tanggal Lahir</label>
+                    <input type="date" name="tgl_lahir" class="form-control" required>
+                </div>
+
+                
+                <div class="mb-3">
+                    <label class="form-label">Tempat Lahir</label>
+                    <input type="text" name="tempat_lahir" class="form-control" required>
+                </div>
+
+                
+                <div class="mb-3">
+                    <label class="form-label">Nomor Akta</label>
+                    <input type="text" name="no_akta" class="form-control" required>
+                </div>
+
+                
+                <div class="mb-3">
+                    <label class="form-label">Upload Berkas (Multiple)</label>
+                    <input type="file" name="media_files[]" class="form-control" multiple>
+                    <small class="text-muted">Anda bisa upload lebih dari 1 file.</small>
+                </div>
+
+                <button class="btn btn-primary">Simpan</button>
+                <a href="<?php echo e(route('peristiwa_kelahiran.index')); ?>" class="btn btn-secondary">Kembali</a>
+            </form>
+
+        </div>
+    </div>
+</div>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.admin.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\alfiqlaravel\laragon-6.0-minimal\www\kependudukan-admin\resources\views/pages/peristiwa_kelahiran/create.blade.php ENDPATH**/ ?>
