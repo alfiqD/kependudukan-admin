@@ -6,7 +6,7 @@
 <div class="card shadow mb-4">
     <div class="card-body">
         {{-- Form tambah user --}}
-        <form action="{{ route('users.store') }}" method="POST">
+        <form action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data" >
             @csrf
             <div class="row">
                 {{-- Kolom kiri: Nama --}}
@@ -56,6 +56,16 @@
                     </div>
                 </div>
             </div>
+
+            {{-- FOTO PROFIL (TAMBAHAN)
+    <div class="row mt-3">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="font-weight-bold text-primary">Foto Profil</label>
+                <input type="file" name="profile_picture" class="form-control">
+            </div>
+        </div>
+    </div> --}}
 
             {{-- Tombol aksi --}}
             <div class="form-group mt-4 text-right">

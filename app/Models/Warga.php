@@ -24,7 +24,7 @@ class Warga extends Model
         'email',
     ];
 
-     public function scopeFilter(Builder $query, $request, array $filterableColumns)
+    public function scopeFilter(Builder $query, $request, array $filterableColumns)
     {
         foreach ($filterableColumns as $column) {
             if ($request->filled($column)) {

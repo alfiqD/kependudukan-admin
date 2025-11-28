@@ -48,8 +48,6 @@
                             <option value="outlook" {{ request('filter') == 'outlook' ? 'selected' : '' }}>Outlook</option>
                             <option value="lainnya" {{ request('filter') == 'lainnya' ? 'selected' : '' }}>Lainnya</option>
                         </select>
-
-
                     </form>
 
 

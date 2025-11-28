@@ -45,7 +45,7 @@ class KeluargaKK extends Model
         if ($request->filled('search')) {
             $search = $request->search;
             // Fungsi ini butuh relasi 'warga' yang baru saja kita tambahkan di atas
-            $query->whereHas('kepalaKeluarga', function($q) use ($search) {
+            $query->whereHas('warga', function($q) use ($search) {
                 $q->where('nama', 'LIKE', '%' . $search . '%');
             });
         }
