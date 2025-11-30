@@ -18,8 +18,9 @@
 
     <div class="card shadow mb-4">
         <div class="card-body">
-
             <form action="{{ route('peristiwa_kelahiran.store') }}" method="POST" enctype="multipart/form-data">
+
+            {{-- <form action="{{ route('peristiwa_kelahiran.store') }}" method="POST" enctype="multipart/form-data"> --}}
                 @csrf
 
                 {{-- Pilih Anak --}}

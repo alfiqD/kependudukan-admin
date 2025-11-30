@@ -77,7 +77,7 @@ class UserController extends Controller
     User::create($validated);
 
     // Redirect ke halaman index dengan pesan sukses
-    return redirect()->route('users.index')->with('success', 'Data user berhasil ditambahkan.');
+    return redirect()->route('users.index')->with('success', 'Data berhasil ditambahkan.');
     }
 
     /**
@@ -112,7 +112,7 @@ class UserController extends Controller
         'password' => $request->password ? Hash::make($request->password) : $user->password,
     ]);
 
-    return redirect()->route('users.index')->with('success', 'Data user berhasil diperbarui.');
+    return redirect()->route('users.index')->with('success', 'Data berhasil diperbarui.');
     }
 
     /**

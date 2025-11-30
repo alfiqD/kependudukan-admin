@@ -78,6 +78,6 @@ class AnggotaKeluargaController extends Controller
     {
         AnggotaKeluarga::destroy($id);
 
-        return redirect()->route('anggota_keluarga.index')->with('success', 'Data berhasil dihapus');
+        return redirect()->route('anggota_keluarga.index')->with('success', 'Data Anggota keluarga berhasil dihapus');
     }
 }

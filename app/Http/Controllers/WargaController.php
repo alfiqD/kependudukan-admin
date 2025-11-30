@@ -47,7 +47,7 @@ class WargaController extends Controller
         ]);
 
         Warga::create($validated);
-        return redirect()->route('warga.index')->with('success', 'Data warga berhasil ditambahkan.');
+        return redirect()->route('warga.index')->with('success', 'Data berhasil ditambahkan.');
     }
 
     /**
@@ -83,7 +83,7 @@ class WargaController extends Controller
         ]);
 
         $warga->update($validated);
-        return redirect()->route('warga.index')->with('success', 'Data warga berhasil diperbarui.');
+        return redirect()->route('warga.index')->with('success', 'Data berhasil diperbarui.');
     }
 
     /**

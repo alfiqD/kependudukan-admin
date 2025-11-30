@@ -62,6 +62,13 @@
         </a>
     </li>
 
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('peristiwa_kelahiran.index') }}">
+            <i class="fas fa-baby"></i>
+            <span>Data Peristiwa Kelahiran </span>
+        </a>
+    </li>
+
     <!-- Divider -->
     <hr class="sidebar-divider">
 

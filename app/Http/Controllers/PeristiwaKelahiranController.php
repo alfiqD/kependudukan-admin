@@ -7,6 +7,7 @@ use App\Models\Warga;
 use App\Models\Media;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class PeristiwaKelahiranController extends Controller
 {
@@ -61,8 +62,11 @@ class PeristiwaKelahiranController extends Controller
         // Upload media
         if ($request->hasFile('media_files')) {
             foreach ($request->file('media_files') as $file) {
-                $fileName = time().'_'.$file->getClientOriginalName();
+                $fileName = time().'_'.preg_replace('/\s+/', '_', $file->getClientOriginalName());
                 $file->storeAs('public/media', $fileName);
+
+                   // Simpan ke disk 'public' dalam folder 'media'
+                    Storage::disk('public')->putFileAs('media', $file, $fileName);
 
                 Media::create([
                     'ref_table' => 'peristiwa_kelahiran',
@@ -74,7 +78,7 @@ class PeristiwaKelahiranController extends Controller
         }
 
         return redirect()->route('peristiwa_kelahiran.index')
-            ->with('success', 'Data kelahiran berhasil ditambah');
+            ->with('success', 'Data kelahiran berhasil ditambahkan');
     }
 
     // ===========================
@@ -126,6 +130,9 @@ class PeristiwaKelahiranController extends Controller
             foreach ($request->file('media_files') as $file) {
                 $fileName = time().'_'.$file->getClientOriginalName();
                 $file->storeAs('public/media', $fileName);
+
+                 // Simpan ke disk 'public' dalam folder 'media'
+                Storage::disk('public')->putFileAs('media', $file, $fileName);
 
                 Media::create([
                     'ref_table' => 'peristiwa_kelahiran',

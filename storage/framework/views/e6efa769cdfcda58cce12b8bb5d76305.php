@@ -16,8 +16,9 @@
 
     <div class="card shadow mb-4">
         <div class="card-body">
-
             <form action="<?php echo e(route('peristiwa_kelahiran.store')); ?>" method="POST" enctype="multipart/form-data">
+
+            
                 <?php echo csrf_field(); ?>
 
                 

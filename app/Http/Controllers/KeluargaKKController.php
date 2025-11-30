@@ -109,6 +109,6 @@ class KeluargaKKController extends Controller
     $keluargaKK = KeluargaKK::findOrFail($id);
     $keluargaKK->delete();
 
-    return redirect()->route('keluarga_kk.index')->with('success', 'Data berhasil dihapus!');
+    return redirect()->route('keluarga_kk.index')->with('success', 'Data Kartu Keluarga berhasil dihapus!');
 }
 }
