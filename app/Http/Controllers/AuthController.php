@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -49,6 +49,9 @@ class AuthController extends Controller
                 ->withErrors(['login' => 'Username, email, atau password salah!'])
                 ->withInput($request->only('username', 'email'));
     }
+
+     // 🔥 WAJIB — SIMPAN USER KE SESSION
+    Auth::login($user);
 
         // Kalau valid, tampilkan halaman success
         return view('pages.auth.success', [
