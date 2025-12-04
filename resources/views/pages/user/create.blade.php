@@ -67,6 +67,24 @@
         </div>
     </div> --}}
 
+    <div class="row mt-3">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="role" class="font-weight-bold text-primary">Role</label>
+            <select name="role" id="role" class="form-control" required>
+                <option value="">-- Pilih Role --</option>
+                <option value="admin">Admin</option>
+                <option value="petugas">Petugas</option>
+                <option value="warga">Warga</option>
+            </select>
+            @error('role')
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
+        </div>
+    </div>
+</div>
+
+
             {{-- Tombol aksi --}}
             <div class="form-group mt-4 text-right">
                 <a href="{{ route('users.index') }}" class="btn btn-secondary">Kembali</a>

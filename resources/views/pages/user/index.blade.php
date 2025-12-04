@@ -57,6 +57,7 @@
                                 <th>No</th>
                                 <th>Nama</th>
                                 <th>Email</th>
+                                <th>Role</th>
                                 <th>Password (Hash)</th> {{-- Kolom baru --}}
                                 <th>Aksi</th>
                             </tr>
@@ -67,6 +68,15 @@
                                     <td>{{ $index + 1 }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
+                                    <td>
+                                        @if ($user->role == 'admin')
+                                            <span class="badge bg-primary">Admin</span>
+                                        @elseif($user->role == 'petugas')
+                                            <span class="badge bg-success">Petugas</span>
+                                        @else
+                                            <span class="badge bg-warning text-dark">Warga</span>
+                                        @endif
+                                    </td>
 
                                     {{-- tampilkan hash password --}}
                                     <td style="max-width: 350px; word-break: break-all;">

@@ -58,8 +58,17 @@
                                 class="form-control" placeholder="Ulangi password baru jika diubah">
                         </div>
                     </div>
-                </div>
 
+
+                </div>
+<div class="mb-3">
+    <label for="role" class="form-label">Role</label>
+    <select name="role" class="form-control" required>
+        <option value="admin"   {{ $user->role == 'admin' ? 'selected' : '' }}>Admin</option>
+        <option value="petugas" {{ $user->role == 'petugas' ? 'selected' : '' }}>Petugas</option>
+        <option value="warga"   {{ $user->role == 'warga' ? 'selected' : '' }}>Warga</option>
+    </select>
+</div>
                 {{-- Tombol aksi --}}
                 <div class="form-group mt-4 text-right">
                     <a href="{{ route('users.index') }}" class="btn btn-secondary">Kembali</a>

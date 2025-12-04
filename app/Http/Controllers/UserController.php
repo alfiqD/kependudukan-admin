@@ -68,6 +68,7 @@ class UserController extends Controller
         'name' => 'required|string|max:255',
         'email' => 'required|email|unique:users,email',
         'password' => 'required|confirmed|min:6',
+        'role' => 'required|in:admin,petugas,warga',
     ]);
 
     // Enkripsi password sebelum disimpan
@@ -105,9 +106,16 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
+        $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|unique:users,email,' . $id,
+        'role' => 'required|in:admin,petugas,warga',
+    ]);
+
         $user->update([
         'name' => $request->name,
         'email' => $request->email,
+        'role' => $request->role,
         // kalau password boleh diubah, pastikan di-hash ulang:
         'password' => $request->password ? Hash::make($request->password) : $user->password,
     ]);

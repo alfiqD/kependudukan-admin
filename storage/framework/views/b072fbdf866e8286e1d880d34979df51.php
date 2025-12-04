@@ -55,6 +55,7 @@
                                 <th>No</th>
                                 <th>Nama</th>
                                 <th>Email</th>
+                                <th>Role</th>
                                 <th>Password (Hash)</th> 
                                 <th>Aksi</th>
                             </tr>
@@ -65,6 +66,15 @@
                                     <td><?php echo e($index + 1); ?></td>
                                     <td><?php echo e($user->name); ?></td>
                                     <td><?php echo e($user->email); ?></td>
+                                    <td>
+                                        <?php if($user->role == 'admin'): ?>
+                                            <span class="badge bg-primary">Admin</span>
+                                        <?php elseif($user->role == 'petugas'): ?>
+                                            <span class="badge bg-success">Petugas</span>
+                                        <?php else: ?>
+                                            <span class="badge bg-warning text-dark">Warga</span>
+                                        <?php endif; ?>
+                                    </td>
 
                                     
                                     <td style="max-width: 350px; word-break: break-all;">
