@@ -17,25 +17,14 @@ use App\Http\Controllers\PeristiwaKelahiranController;
 // //route halaman dashboard
 // Route::get('/dashboard', [AdminController::class, 'index']);
 
+
+
 //route form login
 Route::get('/auth', [AuthController::class, 'index']);
 // //route form respon login
 Route::post('/auth/login', [AuthController::class, 'login']);
 
-// //route admin template
-// Route::get('/admin', function () {
-//     return view('admin.dashboard');
-// });
 
-// Route::get('/', function () {
-//     return view('login'); // tampilkan halaman login
-// });
-
-// Route::get('/admin', function () {
-//     return view('admin.dashboard');
-// });
-
-// Route::get('/dashboard', [DashboardController::class, 'index'])-> name ('dashboard');
 
 // Route utama (http://127.0.0.1:8000)
 Route::get('/', function () {
@@ -70,13 +59,37 @@ Route::prefix('admin')->group(function () {
 
 });
 
+// Route::get('/admin', function () {
+//     return view('dashboard');
+// })->middleware('checkislogin');
+
+// ===========================
+// ADMIN AREA (HARUS LOGIN)
+// ===========================
+Route::get('/admin', [DashboardController::class, 'index'])
+    ->middleware('checkrole:admin,petugas,warga')
+    ->name('admin.dashboard');
 
 
+Route::prefix('admin')->group(function () {
+
+    // =======================
+    // USERS (ADMIN ONLY)
+    // =======================
+    Route::resource('users', UserController::class)
+        ->middleware('checkrole:admin');
 
 
+    // =======================
+    // DATA YANG BISA DIAKSES
+    // admin, petugas, warga
+    // =======================
+    Route::middleware('checkrole:admin,petugas,warga')->group(function () {
 
+        Route::resource('keluarga_kk', KeluargaKKController::class);
+        Route::resource('warga', WargaController::class);
+        Route::resource('anggota_keluarga', AnggotaKeluargaController::class);
+        Route::resource('peristiwa_kelahiran', PeristiwaKelahiranController::class);
+    });
 
-
-
-
-
+});
