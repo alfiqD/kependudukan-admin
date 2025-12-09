@@ -1,0 +1,1 @@
+<?php /**PATH C:\alfiqlaravel\laragon-6.0-minimal\www\kependudukan-admin\resources\views/pages/profile/edit.blade.php ENDPATH**/ ?>

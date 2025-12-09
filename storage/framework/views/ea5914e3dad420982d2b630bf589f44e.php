@@ -69,6 +69,13 @@
         </a>
     </li>
 
+    <li class="nav-item">
+        <a class="nav-link" href="<?php echo e(route('profile.pengembang')); ?>">
+            <i class="fas fa-baby"></i>
+            <span>Profile Pengembang </span>
+        </a>
+    </li>
+
     <!-- Divider -->
     <hr class="sidebar-divider">
 

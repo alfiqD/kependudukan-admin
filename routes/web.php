@@ -9,7 +9,7 @@ use App\Http\Controllers\WargaController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AnggotaKeluargaController;
 use App\Http\Controllers\PeristiwaKelahiranController;
-
+use App\Http\Controllers\DeveloperProfileController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -93,3 +93,8 @@ Route::prefix('admin')->group(function () {
     });
 
 });
+
+
+    Route::resource('profile', App\Http\Controllers\ProfileController::class);
+    Route::get('/developer-profile', [DeveloperProfileController::class, 'developerProfile'])
+    ->name('profile.pengembang');
