@@ -5,8 +5,8 @@
   <title>Login Sistem Kependudukan — Premium</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="icon" href="/assets/admin/img/favicon32.png">
-  <link rel="shortcut icon" href="/assets/admin/img/favicon32.png">
+  <link rel="icon" href="/assets/admin/img/LOGO-aja.png">
+  <link rel="shortcut icon" href="/assets/admin/img/LOGO-aja.png">
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
@@ -155,7 +155,7 @@
 
   <div class="right-section">
     <div class="text-center mb-4">
-      <img src="/assets/admin/img/logo-kependudukan2.jpg" class="logo-login">
+      <img src="/assets/admin/img/LOGO-kpnddkn.png" class="logo-login">
       <h3 class="fw-semibold">Login Sistem Kependudukan</h3>
     </div>
 
@@ -207,7 +207,7 @@
       slides[current].classList.add('active');
     }
 
-    setInterval(nextSlide, 3800);
+    setInterval(nextSlide, 3500);
   });
 </script>
 

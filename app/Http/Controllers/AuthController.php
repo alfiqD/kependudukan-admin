@@ -78,7 +78,8 @@ class AuthController extends Controller
                 'min:3',
                 'regex:/[A-Z]/',
                 'confirmed'
-            ]
+            ],
+            'role' => 'required|string', // wajib ada role
         ], [
             //'name.required' => 'Nama lengkap wajib diisi!',
             'name.required' => 'Nama wajib diisi!',
@@ -88,13 +89,15 @@ class AuthController extends Controller
             'password.required' => 'Password wajib diisi!',
             'password.min' => 'Password minimal 3 karakter!',
             'password.regex' => 'Password harus mengandung huruf kapital!',
-            'password.confirmed' => 'Konfirmasi password tidak cocok!'
+            'password.confirmed' => 'Konfirmasi password tidak cocok!',
+            'role.required' => 'Role wajib dipilih!'
         ]);
 
         $user = User::create([
         'name' => $request->name,
         'email' => $request->email,
-        'password' => Hash::make($request->password) // hash password
+        'password' => Hash::make($request->password),// hash password
+        'role' => $request['role'],
     ]);
 
         // Simulasi berhasil daftar (belum simpan ke DB)
@@ -102,7 +105,8 @@ class AuthController extends Controller
             'title' => 'Registrasi Berhasil',
             'name' => $request->name,
             'email' => $request->email,
-            'password' => $request->password
+            'password' => $request->password,
+            'role' => $request->role
         ]);
     }
 

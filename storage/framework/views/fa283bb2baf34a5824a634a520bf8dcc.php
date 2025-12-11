@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>{{ $title ?? 'Registrasi Berhasil' }}</title>
+    <title><?php echo e($title ?? 'Registrasi Berhasil'); ?></title>
 
     <link rel="icon" href="/assets/admin/img/favicon32.png">
     <link rel="shortcut icon" href="/assets/admin/img/favicon32.png">
@@ -92,11 +92,11 @@
     <p class="text-center mb-4">Akun berhasil dibuat. Berikut detail data Anda:</p>
 
     <ul class="list-group mb-4">
-        <li class="list-group-item">👤 Nama: {{ $name }}</li>
-        <li class="list-group-item">📧 Email: {{ $email }}</li>
-        @if(isset($role))
-        <li class="list-group-item">🔐 Role: {{ ucfirst($role) }}</li>
-        @endif
+        <li class="list-group-item">👤 Nama: <?php echo e($name); ?></li>
+        <li class="list-group-item">📧 Email: <?php echo e($email); ?></li>
+        <?php if(isset($role)): ?>
+        <li class="list-group-item">🔐 Role: <?php echo e(ucfirst($role)); ?></li>
+        <?php endif; ?>
     </ul>
 
     <div class="btn-group-premium">
@@ -111,3 +111,4 @@
 
 </body>
 </html>
+<?php /**PATH C:\alfiqlaravel\laragon-6.0-minimal\www\kependudukan-admin\resources\views/pages/auth/register-success.blade.php ENDPATH**/ ?>

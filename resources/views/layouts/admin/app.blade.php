@@ -7,12 +7,24 @@
     <title>Dashboard Admin</title>
 
     {{-- logo di nama ats url --}}
-    <link rel="icon" href="/assets/admin/img/favicon32.png">
-    <link rel="shortcut icon" href="/assets/admin/img/favicon32.png">
+    <link rel="icon" href="/assets/admin/img/LOGO-aja.png">
+    <link rel="shortcut icon" href="/assets/admin/img/LOGO-aja.png">
 
     {{-- start css --}}
     @include('layouts.admin.css')
     <style>
+        .logo-login {
+            display: block;
+            max-width: 100%;
+            /* supaya tidak melebihi container */
+            width: 180px;
+            /* ukuran lebar yang kamu inginkan */
+            height: auto;
+            /* tinggi otomatis supaya proporsional */
+            object-fit: contain;
+            /* memastikan gambar tidak terpotong */
+        }
+
         .whatsapp-float {
             position: fixed;
             width: 60px;
