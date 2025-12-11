@@ -2,190 +2,214 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Login Sistem Kependudukan</title>
+  <title>Login Sistem Kependudukan — Premium</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-    <link rel="icon" href="/assets/admin/img/favicon32.png">
-    <link rel="shortcut icon" href="/assets/admin/img/favicon32.png">
 
-  <!-- Bootstrap & Icons -->
+  <link rel="icon" href="/assets/admin/img/favicon32.png">
+  <link rel="shortcut icon" href="/assets/admin/img/favicon32.png">
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
 
   <style>
     body {
-      background: linear-gradient(135deg, #4A90E2, #50E3C2);
+      background: #1E3C72;
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 30px;
       font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 20px;
     }
 
-    .login-container {
+    .login-wrapper {
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-radius: 20px;
       display: flex;
-      flex-wrap: wrap;
-      background-color: #fff;
-      border-radius: 1rem;
       overflow: hidden;
-      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-      max-width: 900px;
       width: 100%;
+      max-width: 1100px;
+      border: 1px solid rgba(255,255,255,0.2);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+      animation: fadeIn 0.8s ease;
     }
 
-    /* BAGIAN KIRI */
+    @keyframes fadeIn {
+      from {opacity:0; transform:translateY(20px);} to {opacity:1; transform:translateY(0);}
+    }
+
     .left-section {
-      flex: 1;
-      background: linear-gradient(135deg, #4A90E2, #50E3C2);
+      flex: 0 0 60%;
+      position: relative;
+      height: 600px;
+      overflow: hidden;
+    }
+
+    .slideshow-container { position:absolute; inset:0; }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: 0;
+      transition: opacity 1.2s ease-in-out;
+    }
+
+    .slide.active { opacity:1; }
+
+    .left-caption {
+      position: absolute;
+      bottom: 30px;
+      left: 30px;
+      z-index: 5;
       color: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 3rem 2rem;
-      text-align: center;
+      text-shadow: 0 2px 6px rgba(0,0,0,.6);
     }
 
-    .left-section img {
-      width: 80%;
-      max-width: 240px;
-      margin-bottom: 1.5rem;
-    }
+    .left-caption h3 { font-weight: 700; margin-bottom: 5px; }
 
-    .left-section h4 {
-      font-weight: 600;
-      margin-top: 1rem;
-    }
+    .left-caption p { width: 85%; font-size: 0.95rem; margin: 0; }
 
-    .left-section p {
-      font-size: 0.95rem;
-      opacity: 0.9;
-    }
-
-    /* BAGIAN KANAN */
     .right-section {
-      flex: 1;
-      padding: 3rem 2.5rem;
+      flex: 0 0 40%;
+      padding: 50px 40px;
+      color: #fff;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      background: rgba(255,255,255,0.05);
     }
 
-    .icon-header {
-      font-size: 3rem;
-      color: #50E3C2;
-      margin-bottom: 0.5rem;
+    .form-control {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #fff;
+      height: 48px;
+      border-radius: 12px;
     }
+
+    .form-control::placeholder { color: #e6e6e6; }
 
     .form-control:focus {
-      border-color: #4A90E2;
-      box-shadow: 0 0 0 0.2rem rgba(74, 144, 226, 0.25);
+      border-color: #6BCBFF;
+      box-shadow: 0 0 12px rgba(107,203,255,0.4);
     }
 
-    .btn-primary {
-      background-color: #4A90E2;
-      border-color: #4A90E2;
-      transition: 0.3s;
+    .btn-premium {
+      background: linear-gradient(135deg, #6BCBFF, #4A90E2);
+      border: none;
+      padding: 12px 0;
+      border-radius: 12px;
+      font-size: 16px;
+      color: #fff;
+      font-weight: 600;
+      transition: 0.25s;
     }
 
-    .btn-primary:hover {
-      background-color: #357ABD;
-      border-color: #357ABD;
+    .btn-premium:hover {
+      background: linear-gradient(135deg, #4A90E2, #1F65B8);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+      transform: translateY(-2px);
     }
 
-    .text-center a {
-      color: #4A90E2;
-      text-decoration: none;
-      font-weight: 500;
+    .logo-login {
+      width: 160px;
+      display: block;
+      margin: 0 auto 15px auto;
+      border-radius: 14px;
+      box-shadow: 0 0 18px rgba(255,255,255,0.35);
     }
 
-    .text-center a:hover {
-      text-decoration: underline;
+    a { color:#6BCBFF; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+
+    @media (max-width:992px) {
+      .login-wrapper { flex-direction:column; }
+      .left-section { height:350px; flex:unset; }
     }
 
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      .left-section {
-        display: none;
-      }
-      .right-section {
-        width: 100%;
-      }
-    }
-
-    /* Aturan untuk logo di halaman login */
-.logo-login {
-  width: 190px; /* Atur lebar sesuai keinginan Anda. Contoh: 180px */
-  height: auto; /* Biarkan tinggi menyesuaikan secara otomatis agar gambar tidak gepeng */
-  margin-bottom: -10px; /* Opsional: tambahkan sedikit jarak di bawah logo */
-}
-
-/* Jika Anda ingin logo berada di tengah */
-.text-center img.logo-login { /* Pastikan selektornya spesifik jika ada .text-center di atasnya */
-  display: block; /* Agar margin auto bisa bekerja */
-  margin-left: auto;
-  margin-right: auto;
-}
+    @media (max-width:768px) { .left-section{display:none;} }
   </style>
-
-
-
 </head>
 
 <body>
+<div class="login-wrapper">
 
-  <div class="login-container">
-    <!-- Bagian kiri -->
-    <div class="left-section">
-      <img src="https://cdn-icons-png.flaticon.com/512/906/906175.png" alt="Ilustrasi Penduduk">
-      <h4>Pusat Data Kependudukan</h4>
+  <div class="left-section">
+    <div class="slideshow-container">
+      <img src="/media/slideshow/indonesia1.png" class="slide active" alt="">
+      <img src="/media/slideshow/indonesia2.png" class="slide" alt="">
+      <img src="/media/slideshow/indonesia3.png" class="slide" alt="">
+    </div>
+
+    <div class="left-caption">
+      <h3>Pusat Data Kependudukan</h3>
       <p>Kelola data warga dan keluarga desa dengan mudah, cepat, dan aman.</p>
     </div>
+  </div>
 
-    <!-- Bagian kanan -->
-    <div class="right-section">
-      <div class="text-center mb-4">
-        <img src="/assets/admin/img/logo-kependudukan2.jpg" alt="Logo Sistem Kependudukan" class="logo-login">
-        <h3 class="fw-semibold">Login Sistem Kependudukan</h3>
+  <div class="right-section">
+    <div class="text-center mb-4">
+      <img src="/assets/admin/img/logo-kependudukan2.jpg" class="logo-login">
+      <h3 class="fw-semibold">Login Sistem Kependudukan</h3>
+    </div>
+
+    <?php if($errors->any()): ?>
+    <div class="alert alert-danger">
+      <ul class="m-0">
+        <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+          <li><?php echo e($error); ?></li>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+      </ul>
+    </div>
+    <?php endif; ?>
+
+    <form method="POST" action="/auth/login">
+      <?php echo csrf_field(); ?>
+
+      <div class="mb-3">
+        <label class="form-label">Username</label>
+        <input type="text" name="username" class="form-control" placeholder="Masukkan username" value="<?php echo e(old('username')); ?>">
       </div>
 
-      <?php if($errors->any()): ?>
-        <div class="alert alert-danger">
-          <ul class="mb-0">
-            <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-              <li><?php echo e($error); ?></li>
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-          </ul>
-        </div>
-      <?php endif; ?>
-
-      <form method="POST" action="/auth/login">
-        <?php echo csrf_field(); ?>
-        <div class="mb-3">
-          <label class="form-label">Username</label>
-          <input type="text" name="username" class="form-control" value="<?php echo e(old('username')); ?>" placeholder="Masukkan username">
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label">Email</label>
-          <input type="email" name="email" class="form-control" value="<?php echo e(old('email')); ?>" placeholder="Masukkan email">
-        </div>
-
-        <div class="mb-4">
-          <label class="form-label">Password</label>
-          <input type="password" name="password" class="form-control" placeholder="Masukkan password">
-        </div>
-
-        <button class="btn btn-primary w-100 mb-3" type="submit">Masuk</button>
-      </form>
-
-      <div class="text-center mt-2">
-        <p>Belum punya akun? <a href="/register">Registrasi di sini</a></p>
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" name="email" class="form-control" placeholder="Masukkan email" value="<?php echo e(old('email')); ?>">
       </div>
+
+      <div class="mb-4">
+        <label class="form-label">Password</label>
+        <input type="password" name="password" class="form-control" placeholder="Masukkan password">
+      </div>
+
+      <button class="btn-premium w-100 mb-3" type="submit">Masuk</button>
+    </form>
+
+    <div class="text-center mt-2">
+      Belum punya akun? <a href="/register">Registrasi di sini</a>
     </div>
   </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+
+    function nextSlide() {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }
+
+    setInterval(nextSlide, 3800);
+  });
+</script>
 
 </body>
 </html>

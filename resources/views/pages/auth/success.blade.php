@@ -2,89 +2,103 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Login Berhasil</title>
-    {{-- logo di nama ats url --}}
+    <title>Login Berhasil — Premium</title>
+
     <link rel="icon" href="/assets/admin/img/favicon32.png">
     <link rel="shortcut icon" href="/assets/admin/img/favicon32.png">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
     <style>
         body {
-            background: linear-gradient(135deg, #4A90E2, #50E3C2);
+            background: #1E3C72;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             font-family: 'Segoe UI', sans-serif;
         }
-        .card {
-            border-radius: 1rem;
-            padding: 2.5rem;
-            box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.2);
-            background-color: #fff;
-            text-align: center;
-            max-width: 500px;
-            width: 100%;
-        }
-        .success-icon {
-            font-size: 4rem;
-            color: #50E3C2;
-            margin-bottom: 1rem;
-            animation: bounce 1s;
-        }
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-            40% {transform: translateY(-15px);}
-            60% {transform: translateY(-7px);}
-        }
-        .list-group-item {
-            font-size: 16px;
-            padding: 12px 18px;
-            border: none;
-            border-bottom: 1px solid #eee;
-        }
-        .list-group-item:last-child {
-            border-bottom: none;
-        }
-        .btn-group {
-            display: flex;
-            justify-content: space-between;
-            gap: 10px;
-            margin-top: 20px;
-        }
-        .btn-primary {
-            background-color: #4A90E2;
-            border-color: #4A90E2;
-        }
-        .btn-primary:hover {
-            background-color: #357ABD;
-            border-color: #357ABD;
-        }
-    </style>
 
+        .card-premium {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-radius: 1.5rem;
+            padding: 3rem 2.5rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+            width: 100%;
+            max-width: 520px;
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.25);
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0; transform: translateY(20px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+
+        .success-icon {
+            font-size: 4.5rem;
+            color: #78FFDA;
+            text-shadow: 0 0 20px rgba(120,255,218,0.7);
+            margin-bottom: 1.3rem;
+        }
+
+        .list-group-item {
+            background-color: rgba(255,255,255,0.1);
+            border: none;
+            color: #fff;
+            padding: 14px 18px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            backdrop-filter: blur(4px);
+        }
+
+        .btn-premium {
+            background: linear-gradient(135deg, #6BCBFF, #4A90E2);
+            border: none;
+            padding: 12px 0;
+            border-radius: 12px;
+            font-size: 16px;
+            color: #fff;
+            font-weight: 600;
+            transition: 0.25s;
+        }
+
+        .btn-premium:hover {
+            background: linear-gradient(135deg, #4A90E2, #1F65B8);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+            transform: translateY(-2px);
+        }
+
+        .btn-group-premium {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+    </style>
 </head>
 <body>
 
-<div class="card shadow-lg">
-    <div class="success-icon">
+<div class="card-premium">
+    <div class="success-icon text-center">
         <i class="bi bi-check-circle-fill"></i>
     </div>
-    <h3 class="mb-3">Login Berhasil!</h3>
-    <p>Selamat datang <b>{{ $username }}</b>, berikut data login kamu:</p>
 
-    <ul class="list-group mb-4 mt-3">
+    <h3 class="mb-3 text-center fw-bold">Login Berhasil!</h3>
+    <p class="text-center mb-4">Selamat datang <b>{{ $username }}</b>. Berikut detail login Anda:</p>
+
+    <ul class="list-group mb-4">
         <li class="list-group-item">👤 Username: {{ $username }}</li>
         <li class="list-group-item">📧 Email: {{ $email }}</li>
-        {{-- <li class="list-group-item">🔑 Password: {{ $password }}</li> --}}
     </ul>
 
-    <div class="btn-group">
-        <a href="/auth" class="btn btn-primary w-50">
-            <i class="bi bi-arrow-left-circle me-2"></i> Kembali ke Login
-        </a>
-        <a href="/admin" class="btn btn-primary w-50">
-            <i class="bi bi-speedometer2 me-2"></i> Masuk ke Dashboard
-        </a>
+    <div class="btn-group-premium">
+        <a href="/auth" class="btn btn-premium w-50"><i class="bi bi-arrow-left-circle me-2"></i>Kembali</a>
+        <a href="/admin" class="btn btn-premium w-50"><i class="bi bi-speedometer2 me-2"></i>Dashboard</a>
     </div>
 </div>
 

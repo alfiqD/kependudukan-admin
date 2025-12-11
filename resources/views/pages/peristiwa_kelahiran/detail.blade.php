@@ -84,7 +84,8 @@
                                             @if (Str::contains($m->mime_type, 'image'))
                                                 <a href="{{ asset('storage/media/' . $m->file_name) }}" target="_blank">
                                                     <img src="{{ asset('storage/media/' . $m->file_name) }}"
-                                                        class="card-img-top" style="height: 160px; object-fit: cover;">
+                                                        class="card-img-top" style="height: 160px; object-fit: cover;"
+                                                        onerror="this.onerror=null; this.src='{{ asset('media/profile/images/placeholder.png') }}';">
                                                 </a>
                                             @else
                                                 {{-- FILE NON GAMBAR --}}
@@ -95,23 +96,68 @@
                                             @endif
 
                                             {{-- FOOTER: LIHAT + HAPUS --}}
-                                            <div class="card-footer d-flex justify-content-center gap-3">
+                                            <div class="card-footer d-flex justify-content-center">
 
+                                                {{-- Tombol Lihat --}}
                                                 <a href="{{ asset('storage/media/' . $m->file_name) }}" target="_blank"
-                                                    class="btn btn-sm btn-primary">
+                                                    class="btn btn-primary btn-sm btn-small">
                                                     <i class="bi bi-eye"></i> Lihat
                                                 </a>
 
-                                                <form action="{{ route('media.delete', $m->media_id) }}" method="POST">
+                                                {{-- Tombol Download --}}
+                                                <a href="{{ asset('storage/media/' . $m->file_name) }}" download
+                                                    class="btn btn-success btn-sm btn-big">
+                                                    <i class="bi bi-download"></i> Download
+                                                </a>
+
+                                                {{-- Tombol Hapus --}}
+                                                <form action="{{ route('media.delete', $m->media_id) }}" method="POST"
+                                                    class="m-0 p-0">
                                                     @csrf
                                                     @method('DELETE')
-
-                                                    <button type="button" class="btn btn-sm btn-danger btn-delete">
+                                                    <button type="button"
+                                                        class="btn btn-danger btn-sm btn-small btn-delete">
                                                         <i class="bi bi-trash"></i> Hapus
                                                     </button>
                                                 </form>
 
                                             </div>
+
+
+                                            <style>
+                                                /* Tombol kecil: untuk Lihat & Hapus */
+                                                .btn-small {
+                                                    width: 110px;
+                                                    /* panjang sama */
+                                                    height: 32px;
+                                                    padding: 4px 6px;
+                                                    font-size: 12px;
+                                                    display: flex;
+                                                    align-items: center;
+                                                    justify-content: center;
+                                                    gap: 4px;
+                                                    border-radius: 6px;
+                                                    margin: 0 3px;
+                                                }
+
+                                                /* Tombol besar: untuk Download */
+                                                .btn-big {
+                                                    width: 130px;
+                                                    /* lebih panjang sedikit */
+                                                    height: 32px;
+                                                    padding: 4px 6px;
+                                                    font-size: 12px;
+                                                    display: flex;
+                                                    align-items: center;
+                                                    justify-content: center;
+                                                    gap: 4px;
+                                                    border-radius: 6px;
+                                                    margin: 0 3px;
+                                                }
+                                            </style>
+
+
+
 
 
 
