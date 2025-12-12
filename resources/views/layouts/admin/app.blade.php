@@ -12,6 +12,10 @@
 
     {{-- start css --}}
     @include('layouts.admin.css')
+
+    @stack('custom-css')
+
+
     <style>
         .logo-login {
             display: block;
