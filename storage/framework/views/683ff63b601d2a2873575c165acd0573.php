@@ -47,7 +47,14 @@
 
         </span>
 
-        <img class="img-profile rounded-circle" src="<?php echo e(asset('assets/admin/img/undraw_profile.svg')); ?>">
+        <img src="<?php echo e(Auth::user()->profile_picture
+        ? asset('storage/' . Auth::user()->profile_picture)
+        : asset('images/default-avatar.png')); ?>"
+     class="rounded-circle"
+     width="40"
+     height="40"
+     alt="Foto Profil">
+
     </a>
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="<?php echo e(route('profile.index')); ?>">

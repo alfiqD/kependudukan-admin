@@ -168,7 +168,14 @@
             {{ auth()->check() ? auth()->user()->name : 'Guest' }}
         </span>
 
-        <img class="img-profile rounded-circle" src="{{ asset('assets/admin/img/undraw_profile.svg') }}">
+        <img src="{{ Auth::user()->profile_picture
+        ? asset('storage/' . Auth::user()->profile_picture)
+        : asset('images/default-avatar.png') }}"
+     class="rounded-circle"
+     width="40"
+     height="40"
+     alt="Foto Profil">
+
     </a>
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="{{ route('profile.index') }}">
