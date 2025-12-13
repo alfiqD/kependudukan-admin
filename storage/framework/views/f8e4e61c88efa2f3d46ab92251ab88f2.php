@@ -72,30 +72,38 @@
                                     <div class="col">
                                         <div class="card h-100 border">
                                             
-                                            <?php if(Str::contains($m->mime_type, 'image')): ?>
-                                                <a href="<?php echo e(asset('storage/media/' . $m->file_name)); ?>" target="_blank">
-                                                    <img src="<?php echo e(asset('storage/media/' . $m->file_name)); ?>"
-                                                        class="card-img-top"
-                                                        style="height: 180px; object-fit: cover;"
-                                                        onerror="this.onerror=null; this.src='<?php echo e(asset('media/profile/images/placeholder.png')); ?>';"
-                                                        alt="<?php echo e($m->file_name); ?>">
-                                                </a>
-                                            <?php else: ?>
-                                                
-                                                <div class="p-4 text-center bg-light">
-                                                    <?php if(Str::contains($m->mime_type, 'pdf')): ?>
-                                                        <i class="bi bi-file-earmark-pdf fs-1 text-danger"></i>
-                                                    <?php elseif(Str::contains($m->mime_type, 'word') || Str::contains($m->mime_type, 'document')): ?>
-                                                        <i class="bi bi-file-earmark-word fs-1 text-primary"></i>
-                                                    <?php else: ?>
-                                                        <i class="bi bi-file-earmark-text fs-1 text-secondary"></i>
-                                                    <?php endif; ?>
-                                                    <p class="mt-2 text-truncate small px-2" style="font-size: 12px;" title="<?php echo e($m->file_name); ?>">
-                                                        <?php echo e(Str::limit($m->file_name, 20)); ?>
+                                            
+<?php if(Str::contains($m->mime_type, 'image')): ?>
+    <?php
+        $fotoUrl = $m->file_name
+                   && Storage::disk('public')->exists('media/' . $m->file_name)
+                   ? asset('storage/media/' . $m->file_name)
+                   : asset('media/profile/images/placeholder.png');
+    ?>
+    <a href="<?php echo e($fotoUrl); ?>" target="_blank">
+        <img src="<?php echo e($fotoUrl); ?>"
+             class="card-img-top"
+             style="height: 180px; object-fit: cover;"
+             alt="<?php echo e($m->file_name ?? 'Placeholder Bayi'); ?>">
+    </a>
+<?php else: ?>
+    
+    <div class="p-4 text-center bg-light">
+        <?php if(Str::contains($m->mime_type, 'pdf')): ?>
+            <i class="bi bi-file-earmark-pdf fs-1 text-danger"></i>
+        <?php elseif(Str::contains($m->mime_type, 'word') || Str::contains($m->mime_type, 'document')): ?>
+            <i class="bi bi-file-earmark-word fs-1 text-primary"></i>
+        <?php else: ?>
+            <i class="bi bi-file-earmark-text fs-1 text-secondary"></i>
+        <?php endif; ?>
+        <p class="mt-2 text-truncate small px-2" style="font-size: 12px;" title="<?php echo e($m->file_name); ?>">
+            <?php echo e(Str::limit($m->file_name, 20)); ?>
 
-                                                    </p>
-                                                </div>
-                                            <?php endif; ?>
+        </p>
+    </div>
+<?php endif; ?>
+
+
 
                                             
                                             <div class="card-footer p-2 bg-white">

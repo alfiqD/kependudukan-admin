@@ -74,29 +74,37 @@
                                     <div class="col">
                                         <div class="card h-100 border">
                                             {{-- GAMBAR --}}
-                                            @if (Str::contains($m->mime_type, 'image'))
-                                                <a href="{{ asset('storage/media/' . $m->file_name) }}" target="_blank">
-                                                    <img src="{{ asset('storage/media/' . $m->file_name) }}"
-                                                        class="card-img-top"
-                                                        style="height: 180px; object-fit: cover;"
-                                                        onerror="this.onerror=null; this.src='{{ asset('media/profile/images/placeholder.png') }}';"
-                                                        alt="{{ $m->file_name }}">
-                                                </a>
-                                            @else
-                                                {{-- FILE NON GAMBAR --}}
-                                                <div class="p-4 text-center bg-light">
-                                                    @if (Str::contains($m->mime_type, 'pdf'))
-                                                        <i class="bi bi-file-earmark-pdf fs-1 text-danger"></i>
-                                                    @elseif (Str::contains($m->mime_type, 'word') || Str::contains($m->mime_type, 'document'))
-                                                        <i class="bi bi-file-earmark-word fs-1 text-primary"></i>
-                                                    @else
-                                                        <i class="bi bi-file-earmark-text fs-1 text-secondary"></i>
-                                                    @endif
-                                                    <p class="mt-2 text-truncate small px-2" style="font-size: 12px;" title="{{ $m->file_name }}">
-                                                        {{ Str::limit($m->file_name, 20) }}
-                                                    </p>
-                                                </div>
-                                            @endif
+                                            {{-- GAMBAR --}}
+@if (Str::contains($m->mime_type, 'image'))
+    @php
+        $fotoUrl = $m->file_name
+                   && Storage::disk('public')->exists('media/' . $m->file_name)
+                   ? asset('storage/media/' . $m->file_name)
+                   : asset('media/profile/images/placeholder.png');
+    @endphp
+    <a href="{{ $fotoUrl }}" target="_blank">
+        <img src="{{ $fotoUrl }}"
+             class="card-img-top"
+             style="height: 180px; object-fit: cover;"
+             alt="{{ $m->file_name ?? 'Placeholder Bayi' }}">
+    </a>
+@else
+    {{-- FILE NON GAMBAR --}}
+    <div class="p-4 text-center bg-light">
+        @if (Str::contains($m->mime_type, 'pdf'))
+            <i class="bi bi-file-earmark-pdf fs-1 text-danger"></i>
+        @elseif (Str::contains($m->mime_type, 'word') || Str::contains($m->mime_type, 'document'))
+            <i class="bi bi-file-earmark-word fs-1 text-primary"></i>
+        @else
+            <i class="bi bi-file-earmark-text fs-1 text-secondary"></i>
+        @endif
+        <p class="mt-2 text-truncate small px-2" style="font-size: 12px;" title="{{ $m->file_name }}">
+            {{ Str::limit($m->file_name, 20) }}
+        </p>
+    </div>
+@endif
+
+
 
                                             {{-- FOOTER: Tombol Aksi --}}
                                             <div class="card-footer p-2 bg-white">
