@@ -1,56 +1,50 @@
-<?php $__env->startSection('content'); ?>
-    <div class="py-4">
-        <h2 class="mb-4">Detail Peristiwa Kelahiran</h2>
+@extends('layouts.admin.app')
 
-        
-        <a href="<?php echo e(route('peristiwa_kelahiran.index')); ?>" class="btn btn-secondary mb-3">
+@section('content')
+    <div class="py-4">
+        <h2 class="mb-4">Detail Peristiwa Pindah</h2>
+
+        {{-- BACK BUTTON --}}
+        <a href="{{ route('peristiwa_pindah.index') }}" class="btn btn-secondary mb-3">
             ← Kembali
         </a>
 
-        
+        {{-- WRAPPER FLEX --}}
         <div class="row g-4">
-            
+            {{-- INFORMASI PINDAH --}}
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header bg-primary text-white">
-                        <strong>Informasi Kelahiran</strong>
+                        <strong>Informasi Pindah</strong>
                     </div>
                     <div class="card-body">
                         <table class="table table-bordered mb-0">
                             <tr>
-                                <th width="40%">Nama Bayi</th>
-                                <td><?php echo e($kelahiran->anak->nama ?? $kelahiran->nama_bayi); ?></td>
+                                <th width="40%">Nama Warga</th>
+                                <td>{{ $pindah->warga->nama ?? '-' }}</td>
                             </tr>
                             <tr>
-                                <th>Jenis Kelamin Bayi</th>
-                                <td><?php echo e($kelahiran->anak->jenis_kelamin ?? $kelahiran->jenis_kelamin); ?></td>
+                                <th>Tanggal Pindah</th>
+                                <td>{{ $pindah->tgl_pindah ?? '-' }}</td>
                             </tr>
                             <tr>
-                                <th>Tanggal Lahir</th>
-                                <td><?php echo e($kelahiran->tgl_lahir ?? $kelahiran->tanggal_lahir); ?></td>
+                                <th>Alamat Tujuan</th>
+                                <td>{{ $pindah->alamat_tujuan ?? '-' }}</td>
                             </tr>
                             <tr>
-                                <th>Tempat Lahir</th>
-                                <td><?php echo e($kelahiran->tempat_lahir); ?></td>
+                                <th>Alasan Pindah</th>
+                                <td>{{ $pindah->alasan ?? '-' }}</td>
                             </tr>
                             <tr>
-                                <th>No Akta</th>
-                                <td><?php echo e($kelahiran->no_akta); ?></td>
-                            </tr>
-                            <tr>
-                                <th>Nama Ayah</th>
-                                <td><?php echo e($kelahiran->ayah->nama ?? '-'); ?></td>
-                            </tr>
-                            <tr>
-                                <th>Nama Ibu</th>
-                                <td><?php echo e($kelahiran->ibu->nama ?? '-'); ?></td>
+                                <th>Nomor Surat Pindah</th>
+                                <td>{{ $pindah->no_surat ?? '-' }}</td>
                             </tr>
                         </table>
 
-                        
+                        {{-- TOMBOL AKSI --}}
                         <div class="mt-3 d-flex justify-content-end gap-2">
-                            <a href="<?php echo e(route('peristiwa_kelahiran.edit', $kelahiran->kelahiran_id)); ?>"
-                                class="btn btn-primary">
+                            <a href="{{ route('peristiwa_pindah.edit', $pindah->pindah_id) }}"
+                               class="btn btn-primary">
                                 Edit
                             </a>
                         </div>
@@ -58,97 +52,87 @@
                 </div>
             </div>
 
-            
+            {{-- MEDIA / DOKUMEN --}}
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header bg-info text-white">
-                        <strong>Foto / Dokumen Pendukung</strong>
+                        <strong>Dokumen / Foto Pendukung</strong>
                     </div>
                     <div class="card-body">
-                        <?php if($media->count() == 0): ?>
+                        @if (!isset($media) || $media->count() == 0)
                             <p class="text-muted">Belum ada file media yang diupload.</p>
-                        <?php else: ?>
+                        @else
                             <div class="row row-cols-2 g-3">
-                                <?php $__currentLoopData = $media; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $m): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                @foreach ($media as $m)
                                     <div class="col">
                                         <div class="card h-100 border">
-                                            
-                                            
-                                            <?php if(Str::contains($m->mime_type, 'image')): ?>
-                                                <?php
-                                                    $fotoUrl =
-                                                        $m->file_name &&
-                                                        Storage::disk('public')->exists('media/' . $m->file_name)
-                                                            ? asset('storage/media/' . $m->file_name)
-                                                            : asset('media/profile/images/placeholder.png');
-                                                ?>
-                                                <a href="<?php echo e($fotoUrl); ?>" target="_blank">
-                                                    <img src="<?php echo e($fotoUrl); ?>" class="card-img-top"
-                                                        style="height: 180px; object-fit: cover;"
-                                                        alt="<?php echo e($m->file_name ?? 'Placeholder Bayi'); ?>">
+                                            @if (Str::contains($m->mime_type, 'image'))
+                                                @php
+                                                    $fileUrl = $m->file_name && Storage::disk('public')->exists('media/' . $m->file_name)
+                                                        ? asset('storage/media/' . $m->file_name)
+                                                        : asset('media/profile/images/placeholder.png');
+                                                @endphp
+                                                <a href="{{ $fileUrl }}" target="_blank">
+                                                    <img src="{{ $fileUrl }}" class="card-img-top"
+                                                         style="height: 180px; object-fit: cover;"
+                                                         alt="{{ $m->file_name ?? 'File' }}">
                                                 </a>
-                                            <?php else: ?>
-                                                
+                                            @else
                                                 <div class="p-4 text-center bg-light">
-                                                    <?php if(Str::contains($m->mime_type, 'pdf')): ?>
+                                                    @if (Str::contains($m->mime_type, 'pdf'))
                                                         <i class="bi bi-file-earmark-pdf fs-1 text-danger"></i>
-                                                    <?php elseif(Str::contains($m->mime_type, 'word') || Str::contains($m->mime_type, 'document')): ?>
+                                                    @elseif (Str::contains($m->mime_type, 'word') || Str::contains($m->mime_type, 'document'))
                                                         <i class="bi bi-file-earmark-word fs-1 text-primary"></i>
-                                                    <?php else: ?>
+                                                    @else
                                                         <i class="bi bi-file-earmark-text fs-1 text-secondary"></i>
-                                                    <?php endif; ?>
+                                                    @endif
                                                     <p class="mt-2 text-truncate small px-2" style="font-size: 12px;"
-                                                        title="<?php echo e($m->file_name); ?>">
-                                                        <?php echo e(Str::limit($m->file_name, 20)); ?>
-
+                                                       title="{{ $m->file_name }}">
+                                                        {{ Str::limit($m->file_name, 20) }}
                                                     </p>
                                                 </div>
-                                            <?php endif; ?>
+                                            @endif
 
-
-
-                                            
+                                            {{-- FOOTER: Tombol Aksi --}}
                                             <div class="card-footer p-2 bg-white">
                                                 <div class="d-flex justify-content-between gap-1">
-                                                    
-                                                    <a href="<?php echo e(asset('storage/media/' . $m->file_name)); ?>" target="_blank"
-                                                        class="btn btn-outline-primary btn-sm flex-fill d-flex align-items-center justify-content-center gap-1">
+                                                    <a href="{{ asset('storage/media/' . $m->file_name) }}" target="_blank"
+                                                       class="btn btn-outline-primary btn-sm flex-fill d-flex align-items-center justify-content-center gap-1">
                                                         <i class="bi bi-eye fs-6"></i>
                                                         <span class="d-none d-sm-inline">Lihat</span>
                                                     </a>
 
-                                                    
-                                                    <a href="<?php echo e(asset('storage/media/' . $m->file_name)); ?>" download
-                                                        class="btn btn-outline-success btn-sm flex-fill d-flex align-items-center justify-content-center gap-1">
+                                                    <a href="{{ asset('storage/media/' . $m->file_name) }}" download
+                                                       class="btn btn-outline-success btn-sm flex-fill d-flex align-items-center justify-content-center gap-1">
                                                         <i class="bi bi-download fs-6"></i>
                                                         <span class="d-none d-sm-inline">Download</span>
                                                     </a>
 
-                                                    
-                                                    <form action="<?php echo e(route('media.delete', $m->media_id)); ?>" method="POST"
-                                                        class="d-inline m-0 flex-fill">
-                                                        <?php echo csrf_field(); ?>
-                                                        <?php echo method_field('DELETE'); ?>
+                                                    <form action="{{ route('media.delete', $m->media_id) }}" method="POST"
+                                                          class="d-inline m-0 flex-fill">
+                                                        @csrf
+                                                        @method('DELETE')
                                                         <button type="button"
-                                                            class="btn btn-outline-danger btn-sm w-100 d-flex align-items-center justify-content-center gap-1 btn-delete">
+                                                                class="btn btn-outline-danger btn-sm w-100 d-flex align-items-center justify-content-center gap-1 btn-delete">
                                                             <i class="bi bi-trash fs-6"></i>
                                                             <span class="d-none d-sm-inline">Hapus</span>
                                                         </button>
                                                     </form>
                                                 </div>
                                             </div>
+
                                         </div>
                                     </div>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                @endforeach
                             </div>
-                        <?php endif; ?>
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    
+    {{-- SweetAlert untuk Hapus File --}}
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const deleteButtons = document.querySelectorAll('.btn-delete');
@@ -177,7 +161,6 @@
     </script>
 
     <style>
-        /* Styling untuk tombol-tombol */
         .card-footer .btn {
             padding: 0.35rem 0.5rem;
             font-size: 0.8rem;
@@ -199,7 +182,6 @@
             font-size: 0.9rem;
         }
 
-        /* Responsive adjustments */
         @media (max-width: 576px) {
             .card-footer .btn {
                 padding: 0.25rem 0.4rem;
@@ -213,7 +195,6 @@
             }
         }
 
-        /* Hover effects */
         .btn-outline-primary:hover {
             background-color: #0d6efd;
             color: white;
@@ -229,7 +210,6 @@
             color: white;
         }
 
-        /* Card styling */
         .card {
             transition: transform 0.2s ease;
         }
@@ -239,6 +219,4 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
     </style>
-<?php $__env->stopSection(); ?>
-
-<?php echo $__env->make('layouts.admin.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\alfiqlaravel\laragon-6.0-minimal\www\kependudukan-admin\resources\views/pages/peristiwa_kelahiran/detail.blade.php ENDPATH**/ ?>
+@endsection

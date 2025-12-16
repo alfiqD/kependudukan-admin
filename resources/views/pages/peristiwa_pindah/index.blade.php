@@ -1,14 +1,16 @@
-<?php $__env->startSection('content'); ?>
-    <div class="container-fluid">
-        <h1 class="h3 mb-4 text-gray-800">Data Peristiwa Kematian</h1>
+@extends('layouts.admin.app')
 
-        
-        <?php if(session('success')): ?>
-            <div class="alert alert-success"><?php echo e(session('success')); ?></div>
-        <?php endif; ?>
+@section('content')
+    <div class="container-fluid">
+        <h1 class="h3 mb-4 text-gray-800">Data Peristiwa Pindah</h1>
+
+        {{-- Alert sukses --}}
+        @if (session('success'))
+            <div class="alert alert-success">{{ session('success') }}</div>
+        @endif
 
         <!-- Tombol Tambah Data -->
-        <a href="<?php echo e(route('peristiwa_kematian.create')); ?>"
+        <a href="{{ route('peristiwa_pindah.create') }}"
             class="btn btn-primary mb-3 d-inline-flex align-items-center gap-1">
             <ion-icon name="add-circle-outline"></ion-icon> Tambah Data
         </a>
@@ -21,40 +23,40 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama Warga</th>
-                                <th>Tanggal Meninggal</th>
-                                <th>Sebab</th>
-                                <th>Lokasi</th>
+                                <th>Tanggal Pindah</th>
+                                <th>Alamat Tujuan</th>
+                                <th>Alasan</th>
                                 <th>No Surat</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $__empty_1 = true; $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                            @forelse ($data as $index => $item)
                                 <tr>
-                                    <td><?php echo e($data->firstItem() + $index); ?></td>
-                                    <td><?php echo e($item->warga->nama ?? '-'); ?></td>
-                                    <td><?php echo e($item->tgl_meninggal); ?></td>
-                                    <td><?php echo e($item->sebab ?? '-'); ?></td>
-                                    <td><?php echo e($item->lokasi ?? '-'); ?></td>
-                                    <td><?php echo e($item->no_surat ?? '-'); ?></td>
+                                    <td>{{ $data->firstItem() + $index }}</td>
+                                    <td>{{ $item->warga->nama ?? '-' }}</td>
+                                    <td>{{ $item->tgl_pindah }}</td>
+                                    <td>{{ $item->alamat_tujuan }}</td>
+                                    <td>{{ $item->alasan ?? '-' }}</td>
+                                    <td>{{ $item->no_surat ?? '-' }}</td>
                                     <td>
                                         <!-- Tombol Detail -->
-                                        <a href="<?php echo e(route('peristiwa_kematian.show', $item->kematian_id)); ?>"
+                                        <a href="{{ route('peristiwa_pindah.show', $item->pindah_id) }}"
                                             class="btn btn-info btn-sm d-inline-flex align-items-center gap-1">
                                             <ion-icon name="eye-outline"></ion-icon> Detail
                                         </a>
 
                                         <!-- Tombol Edit -->
-                                        <a href="<?php echo e(route('peristiwa_kematian.edit', $item->kematian_id)); ?>"
+                                        <a href="{{ route('peristiwa_pindah.edit', $item->pindah_id) }}"
                                             class="btn btn-warning btn-sm d-inline-flex align-items-center gap-1">
                                             <ion-icon name="create-outline"></ion-icon> Edit
                                         </a>
 
                                         <!-- Tombol Hapus -->
-                                        <form action="<?php echo e(route('peristiwa_kematian.destroy', $item->kematian_id)); ?>"
+                                        <form action="{{ route('peristiwa_pindah.destroy', $item->pindah_id) }}"
                                             method="POST" class="d-inline delete-form">
-                                            <?php echo csrf_field(); ?>
-                                            <?php echo method_field('DELETE'); ?>
+                                            @csrf
+                                            @method('DELETE')
                                             <button type="button"
                                                 class="btn btn-danger btn-sm btn-delete d-inline-flex align-items-center gap-1">
                                                 <ion-icon name="trash-outline"></ion-icon> Hapus
@@ -62,19 +64,16 @@
                                         </form>
                                     </td>
                                 </tr>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                            @empty
                                 <tr>
-                                    <td colspan="7" class="text-center">
-                                        Belum ada data peristiwa kematian.
-                                    </td>
+                                    <td colspan="7" class="text-center">Belum ada data pindah.</td>
                                 </tr>
-                            <?php endif; ?>
+                            @endforelse
                         </tbody>
                     </table>
 
                     <div class="d-flex justify-content-center mt-3">
-                        <?php echo e($data->links('pagination::bootstrap-4')); ?>
-
+                        {{ $data->links('pagination::bootstrap-4') }}
                     </div>
 
                 </div>
@@ -82,7 +81,7 @@
         </div>
     </div>
 
-    
+    {{-- SweetAlert Hapus --}}
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const deleteButtons = document.querySelectorAll('.btn-delete');
@@ -108,17 +107,15 @@
         });
     </script>
 
-    <?php if(session('success')): ?>
+    @if (session('success'))
         <script>
             Swal.fire({
                 icon: 'success',
                 title: 'Berhasil',
-                text: '<?php echo e(session('success')); ?>',
+                text: '{{ session('success') }}',
                 timer: 2000,
                 showConfirmButton: false
             });
         </script>
-    <?php endif; ?>
-<?php $__env->stopSection(); ?>
-
-<?php echo $__env->make('layouts.admin.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\alfiqlaravel\laragon-6.0-minimal\www\kependudukan-admin\resources\views/pages/peristiwa_kematian/index.blade.php ENDPATH**/ ?>
+    @endif
+@endsection

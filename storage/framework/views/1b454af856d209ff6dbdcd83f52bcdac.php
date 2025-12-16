@@ -1,6 +1,6 @@
 <?php $__env->startSection('content'); ?>
     <div class="container-fluid">
-        <h1 class="h3 mb-4 text-gray-800">Data Peristiwa Kematian</h1>
+        <h1 class="h3 mb-4 text-gray-800">Data Peristiwa Pindah</h1>
 
         
         <?php if(session('success')): ?>
@@ -8,7 +8,7 @@
         <?php endif; ?>
 
         <!-- Tombol Tambah Data -->
-        <a href="<?php echo e(route('peristiwa_kematian.create')); ?>"
+        <a href="<?php echo e(route('peristiwa_pindah.create')); ?>"
             class="btn btn-primary mb-3 d-inline-flex align-items-center gap-1">
             <ion-icon name="add-circle-outline"></ion-icon> Tambah Data
         </a>
@@ -21,9 +21,9 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama Warga</th>
-                                <th>Tanggal Meninggal</th>
-                                <th>Sebab</th>
-                                <th>Lokasi</th>
+                                <th>Tanggal Pindah</th>
+                                <th>Alamat Tujuan</th>
+                                <th>Alasan</th>
                                 <th>No Surat</th>
                                 <th>Aksi</th>
                             </tr>
@@ -33,25 +33,25 @@
                                 <tr>
                                     <td><?php echo e($data->firstItem() + $index); ?></td>
                                     <td><?php echo e($item->warga->nama ?? '-'); ?></td>
-                                    <td><?php echo e($item->tgl_meninggal); ?></td>
-                                    <td><?php echo e($item->sebab ?? '-'); ?></td>
-                                    <td><?php echo e($item->lokasi ?? '-'); ?></td>
+                                    <td><?php echo e($item->tgl_pindah); ?></td>
+                                    <td><?php echo e($item->alamat_tujuan); ?></td>
+                                    <td><?php echo e($item->alasan ?? '-'); ?></td>
                                     <td><?php echo e($item->no_surat ?? '-'); ?></td>
                                     <td>
                                         <!-- Tombol Detail -->
-                                        <a href="<?php echo e(route('peristiwa_kematian.show', $item->kematian_id)); ?>"
+                                        <a href="<?php echo e(route('peristiwa_pindah.show', $item->pindah_id)); ?>"
                                             class="btn btn-info btn-sm d-inline-flex align-items-center gap-1">
                                             <ion-icon name="eye-outline"></ion-icon> Detail
                                         </a>
 
                                         <!-- Tombol Edit -->
-                                        <a href="<?php echo e(route('peristiwa_kematian.edit', $item->kematian_id)); ?>"
+                                        <a href="<?php echo e(route('peristiwa_pindah.edit', $item->pindah_id)); ?>"
                                             class="btn btn-warning btn-sm d-inline-flex align-items-center gap-1">
                                             <ion-icon name="create-outline"></ion-icon> Edit
                                         </a>
 
                                         <!-- Tombol Hapus -->
-                                        <form action="<?php echo e(route('peristiwa_kematian.destroy', $item->kematian_id)); ?>"
+                                        <form action="<?php echo e(route('peristiwa_pindah.destroy', $item->pindah_id)); ?>"
                                             method="POST" class="d-inline delete-form">
                                             <?php echo csrf_field(); ?>
                                             <?php echo method_field('DELETE'); ?>
@@ -64,9 +64,7 @@
                                 </tr>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                                 <tr>
-                                    <td colspan="7" class="text-center">
-                                        Belum ada data peristiwa kematian.
-                                    </td>
+                                    <td colspan="7" class="text-center">Belum ada data pindah.</td>
                                 </tr>
                             <?php endif; ?>
                         </tbody>
@@ -121,4 +119,4 @@
     <?php endif; ?>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.admin.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\alfiqlaravel\laragon-6.0-minimal\www\kependudukan-admin\resources\views/pages/peristiwa_kematian/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.admin.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\alfiqlaravel\laragon-6.0-minimal\www\kependudukan-admin\resources\views/pages/peristiwa_pindah/index.blade.php ENDPATH**/ ?>

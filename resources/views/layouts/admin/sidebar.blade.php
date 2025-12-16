@@ -74,6 +74,13 @@
         </a>
     </li>
 
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('peristiwa_pindah.index') }}">
+            <i class="fas fa-truck-moving"></i>
+            <span>Data Peristiwa Pindah</span>
+        </a>
+    </li>
+
     {{-- <li class="nav-item">
         <a class="nav-link" href="{{ route('profile.pengembang') }}">
             <i class="fas fa-user-cog"></i>

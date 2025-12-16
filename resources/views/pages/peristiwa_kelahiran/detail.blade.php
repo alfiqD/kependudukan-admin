@@ -51,7 +51,8 @@
 
                         {{-- TOMBOL AKSI --}}
                         <div class="mt-3 d-flex justify-content-end gap-2">
-                            <a href="{{ route('peristiwa_kelahiran.edit', $kelahiran->kelahiran_id) }}" class="btn btn-primary">
+                            <a href="{{ route('peristiwa_kelahiran.edit', $kelahiran->kelahiran_id) }}"
+                                class="btn btn-primary">
                                 Edit
                             </a>
                         </div>
@@ -75,34 +76,35 @@
                                         <div class="card h-100 border">
                                             {{-- GAMBAR --}}
                                             {{-- GAMBAR --}}
-@if (Str::contains($m->mime_type, 'image'))
-    @php
-        $fotoUrl = $m->file_name
-                   && Storage::disk('public')->exists('media/' . $m->file_name)
-                   ? asset('storage/media/' . $m->file_name)
-                   : asset('media/profile/images/placeholder.png');
-    @endphp
-    <a href="{{ $fotoUrl }}" target="_blank">
-        <img src="{{ $fotoUrl }}"
-             class="card-img-top"
-             style="height: 180px; object-fit: cover;"
-             alt="{{ $m->file_name ?? 'Placeholder Bayi' }}">
-    </a>
-@else
-    {{-- FILE NON GAMBAR --}}
-    <div class="p-4 text-center bg-light">
-        @if (Str::contains($m->mime_type, 'pdf'))
-            <i class="bi bi-file-earmark-pdf fs-1 text-danger"></i>
-        @elseif (Str::contains($m->mime_type, 'word') || Str::contains($m->mime_type, 'document'))
-            <i class="bi bi-file-earmark-word fs-1 text-primary"></i>
-        @else
-            <i class="bi bi-file-earmark-text fs-1 text-secondary"></i>
-        @endif
-        <p class="mt-2 text-truncate small px-2" style="font-size: 12px;" title="{{ $m->file_name }}">
-            {{ Str::limit($m->file_name, 20) }}
-        </p>
-    </div>
-@endif
+                                            @if (Str::contains($m->mime_type, 'image'))
+                                                @php
+                                                    $fotoUrl =
+                                                        $m->file_name &&
+                                                        Storage::disk('public')->exists('media/' . $m->file_name)
+                                                            ? asset('storage/media/' . $m->file_name)
+                                                            : asset('media/profile/images/placeholder.png');
+                                                @endphp
+                                                <a href="{{ $fotoUrl }}" target="_blank">
+                                                    <img src="{{ $fotoUrl }}" class="card-img-top"
+                                                        style="height: 180px; object-fit: cover;"
+                                                        alt="{{ $m->file_name ?? 'Placeholder Bayi' }}">
+                                                </a>
+                                            @else
+                                                {{-- FILE NON GAMBAR --}}
+                                                <div class="p-4 text-center bg-light">
+                                                    @if (Str::contains($m->mime_type, 'pdf'))
+                                                        <i class="bi bi-file-earmark-pdf fs-1 text-danger"></i>
+                                                    @elseif (Str::contains($m->mime_type, 'word') || Str::contains($m->mime_type, 'document'))
+                                                        <i class="bi bi-file-earmark-word fs-1 text-primary"></i>
+                                                    @else
+                                                        <i class="bi bi-file-earmark-text fs-1 text-secondary"></i>
+                                                    @endif
+                                                    <p class="mt-2 text-truncate small px-2" style="font-size: 12px;"
+                                                        title="{{ $m->file_name }}">
+                                                        {{ Str::limit($m->file_name, 20) }}
+                                                    </p>
+                                                </div>
+                                            @endif
 
 
 
@@ -124,7 +126,8 @@
                                                     </a>
 
                                                     {{-- Tombol Hapus --}}
-                                                    <form action="{{ route('media.delete', $m->media_id) }}" method="POST" class="d-inline m-0 flex-fill">
+                                                    <form action="{{ route('media.delete', $m->media_id) }}" method="POST"
+                                                        class="d-inline m-0 flex-fill">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="button"
@@ -186,7 +189,7 @@
 
         .card-footer .btn:hover {
             transform: translateY(-1px);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .card-footer .btn:active {
@@ -234,7 +237,7 @@
 
         .card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
     </style>
 @endsection

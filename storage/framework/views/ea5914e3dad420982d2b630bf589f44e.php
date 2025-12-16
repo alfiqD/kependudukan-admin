@@ -74,6 +74,13 @@
         </a>
     </li>
 
+    <li class="nav-item">
+        <a class="nav-link" href="<?php echo e(route('peristiwa_pindah.index')); ?>">
+            <i class="fas fa-truck-moving"></i>
+            <span>Data Peristiwa Pindah</span>
+        </a>
+    </li>
+
     
 
     <!-- Divider -->
