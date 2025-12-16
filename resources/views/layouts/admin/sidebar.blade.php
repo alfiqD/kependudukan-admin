@@ -1,10 +1,10 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-    <div class="sidebar-brand-icon">
-        <img src="/assets/admin/img/LOGO-projek.png" alt="Logo" class="logo-login">
-    </div>
-</a>
+        <div class="sidebar-brand-icon">
+            <img src="/assets/admin/img/LOGO-projek.png" alt="Logo" class="logo-login">
+        </div>
+    </a>
 
 
     <hr class="sidebar-divider my-0">
@@ -64,6 +64,13 @@
         <a class="nav-link" href="{{ route('peristiwa_kelahiran.index') }}">
             <i class="fas fa-baby"></i>
             <span>Data Peristiwa Kelahiran </span>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('peristiwa_kematian.index') }}">
+            <i class="fas fa-skull-crossbones"></i>
+            <span>Data Peristiwa Kematian</span>
         </a>
     </li>
 

@@ -13,7 +13,7 @@
     
     <?php echo $__env->make('layouts.admin.css', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
 
-    <?php echo $__env->yieldPushContent('custom-css'); ?>
+    <?php echo $__env->yieldPushContent('custom-css'); ?> 
 
 
     <style>

@@ -10,6 +10,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AnggotaKeluargaController;
 use App\Http\Controllers\PeristiwaKelahiranController;
 use App\Http\Controllers\DeveloperProfileController;
+use App\Http\Controllers\PeristiwaKematianController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -54,6 +55,7 @@ Route::prefix('admin')->group(function () {
     Route::resource('users', UserController::class);
     Route::resource('anggota_keluarga', AnggotaKeluargaController::class);
     Route::resource('peristiwa_kelahiran', PeristiwaKelahiranController::class);
+    Route::resource('peristiwa_kematian', PeristiwaKematianController::class);
     Route::delete('/media/delete/{media_id}', [PeristiwaKelahiranController::class, 'deleteMedia'])
         ->name('media.delete');
 

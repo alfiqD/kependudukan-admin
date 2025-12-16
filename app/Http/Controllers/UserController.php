@@ -65,7 +65,7 @@ class UserController extends Controller
             'name'            => 'required|string|max:255',
             'email'           => 'required|email|unique:users,email',
             'password'        => 'required|confirmed|min:6',
-            'role' => 'required|in:admin,staff_desa,kepala_desa',
+            'role'            => 'required|in:admin,staff_desa,kepala_desa',
             'profile_picture' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 

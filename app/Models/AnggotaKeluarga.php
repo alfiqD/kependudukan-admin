@@ -5,6 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 
+
+
+
+
 class AnggotaKeluarga extends Model
 {
     protected $table = 'anggota_keluarga';

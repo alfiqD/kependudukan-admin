@@ -126,13 +126,14 @@
 
                     {{-- Buttons --}}
                     <div class="d-flex justify-content-end mt-3">
-                    <a href="{{ route('peristiwa_kelahiran.index') }}" class="btn btn-secondary" style="margin-right: 5px;">
-                        Kembali
-                    </a>
-                    <button type="submit" class="btn btn-primary">
-                        Simpan Perubahan
-                    </button>
-                </div>
+                        <a href="{{ route('peristiwa_kelahiran.index') }}" class="btn btn-secondary"
+                            style="margin-right: 5px;">
+                            Kembali
+                        </a>
+                        <button type="submit" class="btn btn-primary">
+                            Simpan Perubahan
+                        </button>
+                    </div>
                 </form>
 
             </div>
