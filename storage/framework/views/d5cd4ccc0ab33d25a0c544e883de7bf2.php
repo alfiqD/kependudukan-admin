@@ -25,9 +25,9 @@
                                 <label for="jenis_kelamin" class="font-weight-bold text-primary">Jenis Kelamin</label>
                                 <select name="jenis_kelamin" id="jenis_kelamin" class="form-control" required>
                                     <option value="">-- Pilih Jenis Kelamin --</option>
-                                    <option value="Laki-laki" <?php echo e(old('jenis_kelamin') == 'Laki-laki' ? 'selected' : ''); ?>>
+                                    <option value="L" <?php echo e(old('jenis_kelamin') == 'L' ? 'selected' : ''); ?>>
                                         Laki-laki</option>
-                                    <option value="Perempuan" <?php echo e(old('jenis_kelamin') == 'Perempuan' ? 'selected' : ''); ?>>
+                                    <option value="P" <?php echo e(old('jenis_kelamin') == 'P' ? 'selected' : ''); ?>>
                                         Perempuan</option>
                                 </select>
                             </div>

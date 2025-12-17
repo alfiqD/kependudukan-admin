@@ -66,9 +66,9 @@
                                     <td><?php echo e($data->no_ktp); ?></td>
                                     <td><?php echo e($data->nama); ?></td>
                                     <td>
-                                        <?php if($data->jenis_kelamin == 'Laki-laki'): ?>
+                                        <?php if($data->jenis_kelamin == 'L'): ?>
                                             Laki-laki
-                                        <?php elseif($data->jenis_kelamin == 'Perempuan'): ?>
+                                        <?php elseif($data->jenis_kelamin == 'P'): ?>
                                             Perempuan
                                         <?php else: ?>
                                             -

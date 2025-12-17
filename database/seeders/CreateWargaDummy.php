@@ -19,7 +19,7 @@ class CreateWargaDummy extends Seeder
             DB::table('warga')->insert([
                 'no_ktp' => $faker->unique()->nik(),
                 'nama' => $faker->name(),
-                'jenis_kelamin' => $faker->randomElement(['Laki-laki', 'Perempuan']),
+                'jenis_kelamin' => $faker->randomElement(['L', 'P']),
                 'agama' => $faker->randomElement(['Islam', 'Kristen', 'Katolik', 'Hindu', 'Budha']),
                 'pekerjaan' => $faker->jobTitle(),
                 'telp' => $faker->phoneNumber(),
