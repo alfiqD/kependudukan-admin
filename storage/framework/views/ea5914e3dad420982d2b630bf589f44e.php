@@ -35,7 +35,7 @@
     <!-- Nav Item - Data User -->
     <li class="nav-item">
         <a class="nav-link" href="<?php echo e(route('users.index')); ?>">
-            <i class="fas fa-user"></i>
+            <i class="fas fa-user-shield mr-1"></i>
             <span>Data User</span>
         </a>
     </li>
@@ -48,7 +48,7 @@
     <!-- Menu Data Keluarga KK -->
     <li class="nav-item">
         <a class="nav-link" href="<?php echo e(route('keluarga_kk.index')); ?>">
-            <i class="fas fa-address-card"></i>
+            <i class="fas fa-home"></i>
             <span>Data Kartu Keluarga </span>
         </a>
     </li>
