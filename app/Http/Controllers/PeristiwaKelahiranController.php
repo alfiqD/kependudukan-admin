@@ -17,7 +17,7 @@ class PeristiwaKelahiranController extends Controller
     public function index()
     {
         $data = PeristiwaKelahiran::with(['ayah', 'ibu'])
-            ->orderBy('kelahiran_id', 'DESC')
+            ->orderBy('kelahiran_id', 'ASC')
             ->paginate(10);
 
         return view('pages.peristiwa_kelahiran.index', compact('data'));

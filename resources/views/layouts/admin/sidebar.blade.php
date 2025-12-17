@@ -97,6 +97,21 @@
     </div>
 
     <li class="nav-item">
+    <a class="nav-link" href="/auth">
+        <i class="fas fa-sign-out-alt"></i>  <!-- Icon logout lebih sesuai -->
+        <span>Logout</span>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/register">
+        <i class="fas fa-user-plus"></i>  <!-- Icon register/user tambah -->
+        <span>Register</span>
+    </a>
+</li>
+
+
+    {{-- <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
             aria-expanded="true" aria-controls="collapsePages">
             <i class="fas fa-fw fa-folder"></i>
@@ -109,7 +124,7 @@
                 <a class="collapse-item" href="/register">Register</a>
             </div>
         </div>
-    </li>
+    </li> --}}
 
 
     <hr class="sidebar-divider d-none d-md-block">

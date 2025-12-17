@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Login Sistem Kependudukan</title>
+  <title>Login Sistem Penduduk</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="icon" href="/assets/admin/img/LOGO-aja.png">
@@ -410,7 +410,7 @@
     </div>
 
     <div class="left-caption">
-      <h3>Pusat Data Kependudukan</h3>
+      <h3>Pusat Data Penduduk</h3>
       <p>Kelola data warga dan keluarga desa dengan mudah, cepat, dan aman.</p>
     </div>
   </div>
@@ -419,8 +419,8 @@
   <div class="right-section">
     <div class="login-header">
       <img src="/assets/admin/img/LOGO-kpnddkn.png" class="logo-login" alt="Logo Kependudukan">
-      <h2>Login Sistem <span>Kependudukan</span></h2>
-      <p>Akses pusat data kependudukan desa</p>
+      <h2>Login Sistem <span>Penduduk</span></h2>
+      <p>Akses pusat data penduduk desa</p>
     </div>
 
     <?php if($errors->any()): ?>

@@ -92,19 +92,21 @@
     </div>
 
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-            aria-expanded="true" aria-controls="collapsePages">
-            <i class="fas fa-fw fa-folder"></i>
-            <span>LOGOUT & REGISTER</span>
-        </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Logout & Register</h6>
-                <a class="collapse-item" href="/auth">Logout</a>
-                <a class="collapse-item" href="/register">Register</a>
-            </div>
-        </div>
-    </li>
+    <a class="nav-link" href="/auth">
+        <i class="fas fa-sign-out-alt"></i>  <!-- Icon logout lebih sesuai -->
+        <span>Logout</span>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a class="nav-link" href="/register">
+        <i class="fas fa-user-plus"></i>  <!-- Icon register/user tambah -->
+        <span>Register</span>
+    </a>
+</li>
+
+
+    
 
 
     <hr class="sidebar-divider d-none d-md-block">

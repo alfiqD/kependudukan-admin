@@ -198,9 +198,9 @@
                         <h4 class="text-xl font-semibold text-gray-800 mb-6">Hubungi & Terhubung</h4>
                         <div class="flex flex-wrap gap-4">
                             <?php $__currentLoopData = [
-                                ['icon' => 'fab fa-linkedin', 'text' => 'LinkedIn', 'color' => 'blue-700', 'url' => '#'],
-                                ['icon' => 'fab fa-github', 'text' => 'GitHub', 'color' => 'gray-800', 'url' => '#'],
-                                ['icon' => 'fab fa-instagram', 'text' => 'Instagram', 'color' => 'pink-600', 'url' => '#'],
+                                ['icon' => 'fab fa-linkedin', 'text' => 'LinkedIn', 'color' => 'blue-700', 'url' => 'https://www.linkedin.com/in/alfiq-debriliant-76b329394?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app'],
+                                ['icon' => 'fab fa-github', 'text' => 'GitHub', 'color' => 'gray-800', 'url' => 'https://github.com/alfiqD?tab=overview&from=2025-11-01&to=2025-11-30'],
+                                ['icon' => 'fab fa-instagram', 'text' => 'Instagram', 'color' => 'pink-600', 'url' => 'https://www.instagram.com/alfiqdebriliant_?igsh=c2F1dW03dnl2aGpx'],
                                 ['icon' => 'fas fa-envelope', 'text' => 'Email', 'color' => 'red-500', 'url' => 'mailto:alfiq24si@mahasiswa.pcr.ac.id'],
                                 ['icon' => 'fas fa-map-marker-alt', 'text' => 'Pekanbaru', 'color' => 'green-600', 'url' => 'https://maps.google.com/maps?q=Pekanbaru,Riau,Indonesia']
                             ]; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $social): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -280,7 +280,7 @@
                     <!-- Years of Experience -->
                     <div class="mt-12 text-center">
                         <div class="inline-flex flex-col items-center">
-                            <div class="text-5xl font-bold text-white mb-2">3+</div>
+                            <div class="text-5xl font-bold text-white mb-2">1,5+</div>
                             <div class="text-white/80 text-sm">Years of Experience</div>
                             <div class="w-16 h-1 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-full mt-2"></div>
                         </div>

@@ -16,7 +16,7 @@ class PeristiwaPindahController extends Controller
     public function index()
     {
         $data = PeristiwaPindah::with('warga')
-            ->orderBy('pindah_id', 'DESC')
+            ->orderBy('pindah_id', 'ASC')
             ->paginate(10);
 
         return view('pages.peristiwa_pindah.index', compact('data'));
