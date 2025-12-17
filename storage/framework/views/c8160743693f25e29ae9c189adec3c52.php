@@ -7,8 +7,8 @@
     <title>Dashboard Admin</title>
 
     
-    <link rel="icon" href="/assets/admin/img/LOGO-aja.png">
-    <link rel="shortcut icon" href="/assets/admin/img/LOGO-aja.png">
+    <link rel="icon" href="/assets/admin/img/LGO_Atas.png">
+    <link rel="shortcut icon" href="/assets/admin/img/LGO_Atas.png">
 
     
     <?php echo $__env->make('layouts.admin.css', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>

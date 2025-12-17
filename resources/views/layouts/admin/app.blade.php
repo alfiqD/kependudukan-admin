@@ -7,8 +7,8 @@
     <title>Dashboard Admin</title>
 
     {{-- logo di nama ats url --}}
-    <link rel="icon" href="/assets/admin/img/LOGO-aja.png">
-    <link rel="shortcut icon" href="/assets/admin/img/LOGO-aja.png">
+    <link rel="icon" href="/assets/admin/img/LGO_Atas.png">
+    <link rel="shortcut icon" href="/assets/admin/img/LGO_Atas.png">
 
     {{-- start css --}}
     @include('layouts.admin.css')

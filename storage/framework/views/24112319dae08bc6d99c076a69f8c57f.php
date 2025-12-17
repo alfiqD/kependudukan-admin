@@ -5,8 +5,8 @@
   <title>Login Sistem Penduduk</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="icon" href="/assets/admin/img/LOGO-aja.png">
-  <link rel="shortcut icon" href="/assets/admin/img/LOGO-aja.png">
+  <link rel="icon" href="/assets/admin/img/LGO.png">
+  <link rel="shortcut icon" href="/assets/admin/img/LGO.png">
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
@@ -418,7 +418,7 @@
   <!-- RIGHT SIDE: LOGIN FORM -->
   <div class="right-section">
     <div class="login-header">
-      <img src="/assets/admin/img/LOGO-kpnddkn.png" class="logo-login" alt="Logo Kependudukan">
+      <img src="/assets/admin/img/LGO.png" class="logo-login" alt="Logo Kependudukan">
       <h2>Login Sistem <span>Penduduk</span></h2>
       <p>Akses pusat data penduduk desa</p>
     </div>

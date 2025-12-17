@@ -2,7 +2,7 @@
 
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
         <div class="sidebar-brand-icon">
-            <img src="/assets/admin/img/LOGO-projek.png" alt="Logo" class="logo-login">
+            <img src="/assets/admin/img/LGO.png" alt="Logo" class="logo-login">
         </div>
     </a>
 
