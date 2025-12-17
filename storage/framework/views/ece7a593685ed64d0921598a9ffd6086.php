@@ -22,13 +22,15 @@
 
                         
                         <div class="col-md-4 text-center mb-3 mb-md-0">
-                            <img src="<?php echo e($user->profile_picture
-                                    ? asset('storage/' . $user->profile_picture)
-                                    : asset('images/default-avatar.png')); ?>"
-                                 class="rounded-circle img-thumbnail"
-                                 width="160"
-                                 height="160"
-                                 alt="Foto Profil">
+                            <img src="<?php echo e($user->avatar
+        ? asset('storage/' . $user->avatar)
+        : asset('images/default-avatar.png')); ?>"
+     class="rounded-circle img-thumbnail"
+     width="160"
+     height="160"
+     style="object-fit: cover;"
+     alt="Avatar">
+
 
                             <h5 class="mt-3 mb-0 font-weight-bold">
                                 <?php echo e($user->name); ?>

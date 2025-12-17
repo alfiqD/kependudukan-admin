@@ -47,13 +47,15 @@
 
         </span>
 
-        <img src="<?php echo e(Auth::user()->profile_picture
-        ? asset('storage/' . Auth::user()->profile_picture)
+        <img src="<?php echo e(Auth::user()->avatar
+        ? asset('storage/' . Auth::user()->avatar)
         : asset('images/default-avatar.png')); ?>"
      class="rounded-circle"
      width="40"
      height="40"
-     alt="Foto Profil">
+     style="object-fit: cover;"
+     alt="Avatar">
+
 
     </a>
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

@@ -54,7 +54,7 @@
                         <thead class="table-light">
                             <tr class="text-center">
                                 <th width="50">No</th>
-                                <th width="90">Foto</th>
+                                <th width="90">Avatar</th>
                                 <th>Nama</th>
                                 <th>Email</th>
                                 <th width="120">Role</th>
@@ -72,13 +72,19 @@
 
                                     
                                     <td class="text-center">
-                                        <?php if($user->profile_picture): ?>
-                                            <img src="<?php echo e(asset('storage/' . $user->profile_picture)); ?>" alt="Foto"
-                                                class="rounded-circle" width="45" height="45"
-                                                style="object-fit: cover;">
-                                        <?php else: ?>
-                                            <span class="text-muted">-</span>
-                                        <?php endif; ?>
+                                        <?php if($user->avatar): ?>
+    <img src="<?php echo e(asset('storage/' . $user->avatar)); ?>"
+         class="rounded-circle"
+         width="45"
+         height="45"
+         style="object-fit: cover;">
+<?php else: ?>
+    <img src="<?php echo e(asset('images/default-avatar.png')); ?>"
+         class="rounded-circle"
+         width="45"
+         height="45">
+<?php endif; ?>
+
                                     </td>
 
                                     <td><?php echo e($user->name); ?></td>
@@ -95,7 +101,6 @@
                                             <span class="badge bg-secondary">Tidak Diketahui</span>
                                         <?php endif; ?>
                                     </td>
-
 
                                     <td style="max-width: 300px; word-break: break-all;">
                                         <small class="text-muted"><?php echo e($user->password); ?></small>

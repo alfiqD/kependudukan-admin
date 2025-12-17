@@ -58,17 +58,19 @@
         
         <div class="col-md-6">
             <div class="form-group">
-                <label>Foto Profil</label>
-                <input type="file" name="profile_picture"
-                       class="form-control" accept="image/*">
+                <label>Avatar</label>
+<input type="file" name="avatar"
+       class="form-control" accept="image/*">
 
                 <?php if($user->profile_picture): ?>
                     <div class="mt-2">
-                        <small>Foto saat ini:</small><br>
-                        <img src="<?php echo e(asset('storage/' . $user->profile_picture)); ?>"
-                             class="img-thumbnail"
-                             style="max-width:120px;">
-                    </div>
+    <small>Avatar saat ini:</small><br>
+    <img src="<?php echo e($user->avatar_url); ?>"
+         class="rounded-circle border"
+         width="120"
+         height="120"
+         style="object-fit: cover;">
+</div>
                 <?php endif; ?>
             </div>
         </div>

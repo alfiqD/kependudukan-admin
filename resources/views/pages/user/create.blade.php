@@ -91,12 +91,13 @@
                                 Foto Profil <small class="text-muted">(Opsional)</small>
                             </label>
                             <input type="file"
-                                   name="profile_picture"
-                                   class="form-control"
-                                   accept="image/*">
-                            @error('profile_picture')
-                                <small class="text-danger">{{ $message }}</small>
-                            @enderror
+       name="avatar"
+       class="form-control"
+       accept="image/*">
+                           @error('avatar')
+    <small class="text-danger">{{ $message }}</small>
+@enderror
+
                         </div>
                     </div>
 

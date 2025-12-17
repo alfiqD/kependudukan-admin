@@ -168,13 +168,15 @@
             {{ auth()->check() ? auth()->user()->name : 'Guest' }}
         </span>
 
-        <img src="{{ Auth::user()->profile_picture
-        ? asset('storage/' . Auth::user()->profile_picture)
+        <img src="{{ Auth::user()->avatar
+        ? asset('storage/' . Auth::user()->avatar)
         : asset('images/default-avatar.png') }}"
      class="rounded-circle"
      width="40"
      height="40"
-     alt="Foto Profil">
+     style="object-fit: cover;"
+     alt="Avatar">
+
 
     </a>
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

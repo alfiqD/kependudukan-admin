@@ -62,24 +62,25 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name'            => 'required|string|max:255',
-            'email'           => 'required|email|unique:users,email',
-            'password'        => 'required|confirmed|min:6',
-            'role'            => 'required|in:admin,staff_desa,kepala_desa',
-            'profile_picture' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-        ]);
+    'name'   => 'required|string|max:255',
+    'email'  => 'required|email|unique:users,email',
+    'password' => 'required|confirmed|min:6',
+    'role'   => 'required|in:admin,staff_desa,kepala_desa',
+    'avatar' => 'nullable|image|mimes:jpg,jpeg,png|max:2048', // <- ubah sini
+]);
 
-        // hash password
-        $validated['password'] = Hash::make($request->password);
+// hash password
+$validated['password'] = Hash::make($request->password);
 
-        // upload foto jika ada
-        if ($request->hasFile('profile_picture')) {
-            $validated['profile_picture'] =
-                $request->file('profile_picture')
-                        ->store('media/profile_pictures', 'public');
-        }
+// upload foto jika ada
+if ($request->hasFile('avatar')) { // <- ubah nama field
+    $validated['avatar'] =
+        $request->file('avatar')
+                ->store('media/profile_pictures', 'public');
+}
 
-        User::create($validated);
+User::create($validated);
+
 
         return redirect()->route('users.index')
             ->with('success', 'Data berhasil ditambahkan.');
@@ -102,34 +103,33 @@ class UserController extends Controller
         $user = User::findOrFail($id);
 
         $validated = $request->validate([
-            'name'            => 'required|string|max:255',
-            'email'           => 'required|email|unique:users,email,' . $id,
-            'role'            => 'required|in:admin,staff_desa,kepala_desa',
-            'password'        => 'nullable|confirmed|min:6',
-            'profile_picture' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-        ]);
+    'name'   => 'required|string|max:255',
+    'email'  => 'required|email|unique:users,email,' . $id,
+    'role'   => 'required|in:admin,staff_desa,kepala_desa',
+    'password' => 'nullable|confirmed|min:6',
+    'avatar' => 'nullable|image|mimes:jpg,jpeg,png|max:2048', // <- ubah sini
+]);
 
-        // password optional
-        if ($request->filled('password')) {
-            $validated['password'] = Hash::make($request->password);
-        } else {
-            unset($validated['password']);
-        }
+// password optional
+if ($request->filled('password')) {
+    $validated['password'] = Hash::make($request->password);
+} else {
+    unset($validated['password']);
+}
 
-        // ganti foto jika upload baru
-        if ($request->hasFile('profile_picture')) {
+// ganti foto jika upload baru
+if ($request->hasFile('avatar')) { // <- ubah sini
+    if ($user->avatar && Storage::disk('public')->exists($user->avatar)) {
+        Storage::disk('public')->delete($user->avatar);
+    }
 
-            if ($user->profile_picture &&
-                Storage::disk('public')->exists($user->profile_picture)) {
-                Storage::disk('public')->delete($user->profile_picture);
-            }
+    $validated['avatar'] =
+        $request->file('avatar')
+                ->store('media/profile_pictures', 'public');
+}
 
-            $validated['profile_picture'] =
-                $request->file('profile_picture')
-                        ->store('media/profile_pictures', 'public');
-        }
+$user->update($validated);
 
-        $user->update($validated);
 
         return redirect()->route('users.index')
             ->with('success', 'Data berhasil diperbarui.');
@@ -142,10 +142,10 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
-        if ($user->profile_picture &&
-            Storage::disk('public')->exists($user->profile_picture)) {
-            Storage::disk('public')->delete($user->profile_picture);
-        }
+        if ($user->avatar &&
+    Storage::disk('public')->exists($user->avatar)) {
+    Storage::disk('public')->delete($user->avatar);
+}
 
         $user->delete();
 
@@ -171,22 +171,22 @@ class UserController extends Controller
     public function updateProfilePicture(Request $request)
     {
         $request->validate([
-            'profile_picture' => 'required|image|mimes:jpg,jpeg,png|max:2048',
-        ]);
+    'avatar' => 'required|image|mimes:jpg,jpeg,png|max:2048', // <- ubah nama field
+]);
 
-        $user = Auth::user();
+$user = Auth::user();
 
-        if ($user->profile_picture &&
-            Storage::disk('public')->exists($user->profile_picture)) {
-            Storage::disk('public')->delete($user->profile_picture);
-        }
+if ($user->avatar && Storage::disk('public')->exists($user->avatar)) {
+    Storage::disk('public')->delete($user->avatar);
+}
 
-        $path = $request->file('profile_picture')
-                        ->store('media/profile_pictures', 'public');
+$path = $request->file('avatar')
+                ->store('media/profile_pictures', 'public');
 
-        $user->update([
-            'profile_picture' => $path,
-        ]);
+$user->update([
+    'avatar' => $path,
+]);
+
 
         return back()->with('success', 'Foto profil berhasil diperbarui');
     }

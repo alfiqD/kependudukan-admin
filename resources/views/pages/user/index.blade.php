@@ -55,7 +55,7 @@
                         <thead class="table-light">
                             <tr class="text-center">
                                 <th width="50">No</th>
-                                <th width="90">Foto</th>
+                                <th width="90">Avatar</th>
                                 <th>Nama</th>
                                 <th>Email</th>
                                 <th width="120">Role</th>
@@ -70,15 +70,21 @@
                                         {{ ($users->currentPage() - 1) * $users->perPage() + $loop->iteration }}
                                     </td>
 
-                                    {{-- FOTO PROFIL --}}
+                                    {{-- AVATAR --}}
                                     <td class="text-center">
-                                        @if ($user->profile_picture)
-                                            <img src="{{ asset('storage/' . $user->profile_picture) }}" alt="Foto"
-                                                class="rounded-circle" width="45" height="45"
-                                                style="object-fit: cover;">
-                                        @else
-                                            <span class="text-muted">-</span>
-                                        @endif
+                                        @if ($user->avatar)
+    <img src="{{ asset('storage/' . $user->avatar) }}"
+         class="rounded-circle"
+         width="45"
+         height="45"
+         style="object-fit: cover;">
+@else
+    <img src="{{ asset('images/default-avatar.png') }}"
+         class="rounded-circle"
+         width="45"
+         height="45">
+@endif
+
                                     </td>
 
                                     <td>{{ $user->name }}</td>
@@ -95,7 +101,6 @@
                                             <span class="badge bg-secondary">Tidak Diketahui</span>
                                         @endif
                                     </td>
-
 
                                     <td style="max-width: 300px; word-break: break-all;">
                                         <small class="text-muted">{{ $user->password }}</small>
