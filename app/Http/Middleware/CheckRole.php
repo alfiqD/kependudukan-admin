@@ -10,17 +10,16 @@ class CheckRole
 {
     public function handle(Request $request, Closure $next, ...$roles)
     {
-        // jika belum login → redirect ke login
+        // BELUM LOGIN → arahkan ke LOGIN
         if (!Auth::check()) {
-            return redirect('/auth')->with('error', 'Silakan login dulu.');
+            return redirect()->route('login');
         }
 
-        // jika login tapi rolenya tidak cocok
+        // SUDAH LOGIN TAPI ROLE TIDAK SESUAI
         if (!in_array(Auth::user()->role, $roles)) {
-            return abort(403, 'Akses ditolak');
+            abort(403, 'Akses ditolak');
         }
 
         return $next($request);
     }
 }
-

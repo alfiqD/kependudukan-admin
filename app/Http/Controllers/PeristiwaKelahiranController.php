@@ -28,8 +28,8 @@ class PeristiwaKelahiranController extends Controller
     // ===========================
     public function create()
     {
-        $ayahList = Warga::where('jenis_kelamin', 'Laki-laki')->get();
-        $ibuList  = Warga::where('jenis_kelamin', 'Perempuan')->get();
+        $ayahList = Warga::where('jenis_kelamin', 'L')->get();
+        $ibuList  = Warga::where('jenis_kelamin', 'P')->get();
         $anakList = Warga::all();
 
         return view('pages.peristiwa_kelahiran.create', compact('ayahList', 'ibuList', 'anakList'));
@@ -88,8 +88,8 @@ class PeristiwaKelahiranController extends Controller
     {
         $kelahiran = PeristiwaKelahiran::findOrFail($id);
 
-        $ayahList = Warga::where('jenis_kelamin', 'Laki-laki')->get();
-        $ibuList  = Warga::where('jenis_kelamin', 'Perempuan')->get();
+        $ayahList = Warga::where('jenis_kelamin', 'L')->get();
+        $ibuList  = Warga::where('jenis_kelamin', 'P')->get();
         $anakList = Warga::all(); // Supaya dropdown anak bisa muncul
 
         $media = Media::where('ref_table', 'peristiwa_kelahiran')

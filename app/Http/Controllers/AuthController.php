@@ -19,47 +19,28 @@ class AuthController extends Controller
 
      // Proses login
     public function login(Request $request)
-    {
-        // Validasi input
-        $request->validate([
-            'username' => 'required|string|max:255',
-            'email' => 'required|email',
-            'password' => [
-                'required',
-                'min:3',
-                'regex:/[A-Z]/'
-            ]
-        ], [
-            'username.required' => 'Nama/Username wajib diisi!',
-            'email.required' => 'Email wajib diisi!',
-            'email.email' => 'Format email tidak valid!',
-            'password.required' => 'Password wajib diisi!',
-            'password.min' => 'Password minimal 3 karakter!',
-            'password.regex' => 'Password harus mengandung huruf kapital!'
-        ]);
+{
+    $request->validate([
+        'email' => 'required|email',
+        'password' => 'required|min:3',
+    ], [
+        'email.required' => 'Email wajib diisi!',
+        'email.email' => 'Format email tidak valid!',
+        'password.required' => 'Password wajib diisi!',
+    ]);
 
-        // Cek user di database
-    $user = User::where('name', $request->username) // pakai name, bukan username
-            ->where('email', $request->email)
-            ->first();
+    // 🔥 LOGIN CARA LARAVEL RESMI
+    if (Auth::attempt($request->only('email', 'password'))) {
+        $request->session()->regenerate();
 
-    if (!$user || !Hash::check($request->password, $user->password)) {
-        // Kalau gagal, kembali ke login dengan pesan error
-        return redirect('/auth')
-                ->withErrors(['login' => 'Username, email, atau password salah!'])
-                ->withInput($request->only('username', 'email'));
+        return redirect()->intended('/admin');
     }
 
-     // 🔥 WAJIB — SIMPAN USER KE SESSION
-    Auth::login($user);
+    return back()->withErrors([
+        'login' => 'Email atau password salah!',
+    ])->withInput($request->only('email'));
+}
 
-        // Kalau valid, tampilkan halaman success
-        return view('pages.auth.success', [
-            'username' => $request->username,
-            'email' => $request->email,
-            'password' => $request->password
-        ]);
-    }
 
     // Tampilkan form registrasi
     public function showRegisterForm()
@@ -109,6 +90,16 @@ class AuthController extends Controller
             'role' => $request->role
         ]);
     }
+
+    public function logout(Request $request)
+{
+    Auth::logout();
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+
+    return redirect()->route('login')
+        ->with('error', 'Silakan login terlebih dahulu');
+}
 
     /**
      * Show the form for creating a new resource.
