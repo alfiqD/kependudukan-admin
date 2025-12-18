@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Login Berhasil — Premium</title>
+    <title><?php echo e($title ?? 'Registrasi Berhasil'); ?></title>
 
     <link rel="icon" href="/assets/admin/img/LGO_Atas.png">
     <link rel="shortcut icon" href="/assets/admin/img/LGO_Atas.png">
@@ -88,26 +88,27 @@
         <i class="bi bi-check-circle-fill"></i>
     </div>
 
-    <h3 class="mb-3 text-center fw-bold">Login Berhasil!</h3>
-    <p class="text-center mb-4">
-    Selamat datang <b>{{ auth()->user()->name }}</b>
-</p>
+    <h3 class="mb-3 text-center fw-bold">Registrasi Berhasil!</h3>
+    <p class="text-center mb-4">Akun berhasil dibuat. Berikut detail data Anda:</p>
 
-<ul class="list-group mb-4">
-    <li class="list-group-item">
-        👤 Username: {{ auth()->user()->name }}
-    </li>
-    <li class="list-group-item">
-        📧 Email: {{ auth()->user()->email }}
-    </li>
-</ul>
-
+    <ul class="list-group mb-4">
+        <li class="list-group-item">👤 Nama: <?php echo e($name); ?></li>
+        <li class="list-group-item">📧 Email: <?php echo e($email); ?></li>
+        <?php if(isset($role)): ?>
+        <li class="list-group-item">🔐 Role: <?php echo e(ucfirst($role)); ?></li>
+        <?php endif; ?>
+    </ul>
 
     <div class="btn-group-premium">
-        <a href="/auth" class="btn btn-premium w-50"><i class="bi bi-arrow-left-circle me-2"></i>Kembali</a>
-        <a href="/admin" class="btn btn-premium w-50"><i class="bi bi-speedometer2 me-2"></i>Dashboard</a>
+        <a href="/auth" class="btn btn-premium w-50">
+            <i class="bi bi-arrow-left-circle me-2"></i>Login
+        </a>
+        <a href="/auth" class="btn btn-premium w-50">
+            <i class="bi bi-door-open me-2"></i>Masuk Sistem
+        </a>
     </div>
 </div>
 
 </body>
 </html>
+<?php /**PATH C:\alfiqlaravel\laragon-6.0-minimal\www\kependudukan-admin\resources\views/pages/auth/register-success.blade.php ENDPATH**/ ?>

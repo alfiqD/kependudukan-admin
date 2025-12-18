@@ -20,7 +20,7 @@
 
 
     <div class="sidebar-heading">
-        Data
+        Master Data
     </div>
 
 
@@ -43,7 +43,7 @@
     <hr class="sidebar-divider">
 
     <div class="sidebar-heading">
-        Kependudukan
+        Fitur Utama
     </div>
     <!-- Menu Data Keluarga KK -->
     <li class="nav-item">
@@ -128,7 +128,9 @@
 
 
     <hr class="sidebar-divider d-none d-md-block">
-
+<div class="sidebar-heading">
+        Information
+    </div>
     <li class="nav-item">
         <a class="nav-link" href="{{ route('profile.pengembang') }}">
             <i class="fas fa-user-cog"></i>

@@ -88,29 +88,29 @@
     <i class="bi bi-person-plus-fill me-2"></i>Registrasi Akun Baru
   </h3>
 
-  @if ($errors->any())
+  <?php if($errors->any()): ?>
     <div class="alert alert-danger">
       <ul class="m-0">
-        @foreach ($errors->all() as $error)
-          <li>{{ $error }}</li>
-        @endforeach
+        <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+          <li><?php echo e($error); ?></li>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
       </ul>
     </div>
-  @endif
+  <?php endif; ?>
 
   <form method="POST" action="/auth/register">
-    @csrf
+    <?php echo csrf_field(); ?>
 
     <div class="mb-3">
       <label class="form-label">Nama Lengkap</label>
       <input type="text" name="name" class="form-control"
-             placeholder="Masukkan nama lengkap" value="{{ old('name') }}">
+             placeholder="Masukkan nama lengkap" value="<?php echo e(old('name')); ?>">
     </div>
 
     <div class="mb-3">
       <label class="form-label">Email</label>
       <input type="email" name="email" class="form-control"
-             placeholder="Masukkan email" value="{{ old('email') }}">
+             placeholder="Masukkan email" value="<?php echo e(old('email')); ?>">
     </div>
 
     <div class="mb-3">
@@ -144,3 +144,4 @@
 
 </body>
 </html>
+<?php /**PATH C:\alfiqlaravel\laragon-6.0-minimal\www\kependudukan-admin\resources\views/pages/auth/register-form.blade.php ENDPATH**/ ?>

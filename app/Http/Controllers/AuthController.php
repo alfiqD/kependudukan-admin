@@ -20,25 +20,22 @@ class AuthController extends Controller
      // Proses login
     public function login(Request $request)
 {
-    $request->validate([
+    $credentials = $request->validate([
         'email' => 'required|email',
-        'password' => 'required|min:3',
-    ], [
-        'email.required' => 'Email wajib diisi!',
-        'email.email' => 'Format email tidak valid!',
-        'password.required' => 'Password wajib diisi!',
+        'password' => 'required'
     ]);
 
-    // 🔥 LOGIN CARA LARAVEL RESMI
-    if (Auth::attempt($request->only('email', 'password'))) {
+    if (Auth::attempt($credentials)) {
         $request->session()->regenerate();
 
-        return redirect()->intended('/admin');
+        return redirect()
+            ->route('login.success')
+            ->with('success', 'Login berhasil');
     }
 
     return back()->withErrors([
-        'login' => 'Email atau password salah!',
-    ])->withInput($request->only('email'));
+        'email' => 'Email atau password salah',
+    ]);
 }
 
 

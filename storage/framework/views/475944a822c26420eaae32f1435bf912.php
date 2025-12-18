@@ -90,15 +90,17 @@
 
     <h3 class="mb-3 text-center fw-bold">Login Berhasil!</h3>
     <p class="text-center mb-4">
-    Selamat datang <b>{{ auth()->user()->name }}</b>
+    Selamat datang <b><?php echo e(auth()->user()->name); ?></b>
 </p>
 
 <ul class="list-group mb-4">
     <li class="list-group-item">
-        👤 Username: {{ auth()->user()->name }}
+        👤 Username: <?php echo e(auth()->user()->name); ?>
+
     </li>
     <li class="list-group-item">
-        📧 Email: {{ auth()->user()->email }}
+        📧 Email: <?php echo e(auth()->user()->email); ?>
+
     </li>
 </ul>
 
@@ -111,3 +113,4 @@
 
 </body>
 </html>
+<?php /**PATH C:\alfiqlaravel\laragon-6.0-minimal\www\kependudukan-admin\resources\views/pages/auth/success.blade.php ENDPATH**/ ?>

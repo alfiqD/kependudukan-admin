@@ -17,7 +17,7 @@ class CheckRole
 
         // SUDAH LOGIN TAPI ROLE TIDAK SESUAI
         if (!in_array(Auth::user()->role, $roles)) {
-            abort(403, 'Akses ditolak');
+            abort(403, 'ANDA TIDAK MEMILIKI AKSES KE HALAM INI');
         }
 
         return $next($request);

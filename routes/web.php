@@ -20,9 +20,11 @@ use App\Http\Controllers\DeveloperProfileController;
 */
 Route::get('/', fn () => redirect('/auth'));
 Route::get('/auth', [AuthController::class, 'index'])->name('login');
-Route::get('/auth', [AuthController::class, 'index'])->name('login');
-
 Route::post('/auth/login', [AuthController::class, 'login']);
+Route::get('/login-success', function () {
+    return view('pages.auth.success');
+})->middleware('auth')->name('login.success');
+
 Route::get('/register', [AuthController::class, 'showRegisterForm']);
 Route::post('/auth/register', [AuthController::class, 'register']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');

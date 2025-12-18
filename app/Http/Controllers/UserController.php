@@ -20,12 +20,12 @@ class UserController extends Controller
 
         $query = User::orderBy('id', 'asc');
 
-        // 🔎 Search nama
+        //Search nama
         if ($search) {
             $query->where('name', 'like', '%' . $search . '%');
         }
 
-        // 🔽 Filter domain email
+        // Filter domain email
         if ($filter) {
             if ($filter == 'gmail') {
                 $query->where('email', 'like', '%@gmail.%');
@@ -62,24 +62,24 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-    'name'   => 'required|string|max:255',
-    'email'  => 'required|email|unique:users,email',
-    'password' => 'required|confirmed|min:6',
-    'role'   => 'required|in:admin,staff_desa,kepala_desa',
-    'avatar' => 'nullable|image|mimes:jpg,jpeg,png|max:2048', // <- ubah sini
-]);
+            'name'   => 'required|string|max:255',
+            'email'  => 'required|email|unique:users,email',
+            'password' => 'required|confirmed|min:6',
+            'role'   => 'required|in:admin,staff_desa,kepala_desa',
+            'avatar' => 'nullable|image|mimes:jpg,jpeg,png|max:2048', // <- ubah sini
+    ]);
 
-// hash password
-$validated['password'] = Hash::make($request->password);
+        // hash password
+        $validated['password'] = Hash::make($request->password);
 
-// upload foto jika ada
-if ($request->hasFile('avatar')) { // <- ubah nama field
-    $validated['avatar'] =
-        $request->file('avatar')
-                ->store('media/profile_pictures', 'public');
-}
+        // upload foto jika ada
+        if ($request->hasFile('avatar')) { // <- ubah nama field
+            $validated['avatar'] =
+                $request->file('avatar')
+                        ->store('media/profile_pictures', 'public');
+        }
 
-User::create($validated);
+        User::create($validated);
 
 
         return redirect()->route('users.index')
@@ -94,7 +94,6 @@ User::create($validated);
         $user = User::findOrFail($id);
         return view('pages.user.edit', compact('user'));
     }
-
     /**
      * Update the specified resource in storage.
      */
@@ -103,37 +102,37 @@ User::create($validated);
         $user = User::findOrFail($id);
 
         $validated = $request->validate([
-    'name'   => 'required|string|max:255',
-    'email'  => 'required|email|unique:users,email,' . $id,
-    'role'   => 'required|in:admin,staff_desa,kepala_desa',
-    'password' => 'nullable|confirmed|min:6',
-    'avatar' => 'nullable|image|mimes:jpg,jpeg,png|max:2048', // <- ubah sini
-]);
+        'name'   => 'required|string|max:255',
+        'email'  => 'required|email|unique:users,email,' . $id,
+        'role'   => 'required|in:admin,staff_desa,kepala_desa',
+        'password' => 'nullable|confirmed|min:6',
+        'avatar' => 'nullable|image|mimes:jpg,jpeg,png|max:2048', // <- ubah sini
+    ]);
 
-// password optional
-if ($request->filled('password')) {
-    $validated['password'] = Hash::make($request->password);
-} else {
-    unset($validated['password']);
-}
+        // password optional
+        if ($request->filled('password')) {
+            $validated['password'] = Hash::make($request->password);
+        } else {
+            unset($validated['password']);
+        }
 
-// ganti foto jika upload baru
-if ($request->hasFile('avatar')) { // <- ubah sini
-    if ($user->avatar && Storage::disk('public')->exists($user->avatar)) {
-        Storage::disk('public')->delete($user->avatar);
-    }
+        // ganti foto jika upload baru
+        if ($request->hasFile('avatar')) { // <- ubah sini
+            if ($user->avatar && Storage::disk('public')->exists($user->avatar)) {
+                Storage::disk('public')->delete($user->avatar);
+            }
 
-    $validated['avatar'] =
-        $request->file('avatar')
-                ->store('media/profile_pictures', 'public');
-}
+            $validated['avatar'] =
+                $request->file('avatar')
+                        ->store('media/profile_pictures', 'public');
+        }
 
-$user->update($validated);
+        $user->update($validated);
 
 
         return redirect()->route('users.index')
             ->with('success', 'Data berhasil diperbarui.');
-    }
+        }
 
     /**
      * Remove the specified resource from storage.
