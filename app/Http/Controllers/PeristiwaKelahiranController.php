@@ -35,9 +35,6 @@ class PeristiwaKelahiranController extends Controller
         return view('pages.peristiwa_kelahiran.create', compact('ayahList', 'ibuList', 'anakList'));
     }
 
-    // ===========================
-    // STORE
-    // ===========================
     public function store(Request $request)
     {
         $request->validate([
@@ -99,9 +96,6 @@ class PeristiwaKelahiranController extends Controller
         return view('pages.peristiwa_kelahiran.edit', compact('kelahiran', 'ayahList', 'ibuList', 'anakList', 'media'));
     }
 
-    // ===========================
-    // UPDATE
-    // ===========================
     public function update(Request $request, $id)
     {
         $kelahiran = PeristiwaKelahiran::findOrFail($id);

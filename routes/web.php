@@ -21,10 +21,9 @@ use App\Http\Controllers\DeveloperProfileController;
 Route::get('/', fn () => redirect('/auth'));
 Route::get('/auth', [AuthController::class, 'index'])->name('login');
 Route::post('/auth/login', [AuthController::class, 'login']);
-Route::get('/login-success', function () {
-    return view('pages.auth.success');
-})->middleware('auth')->name('login.success');
-
+Route::get('/login-success', fn () => view('pages.auth.success'))
+    ->middleware('auth')
+    ->name('login.success');
 Route::get('/register', [AuthController::class, 'showRegisterForm']);
 Route::post('/auth/register', [AuthController::class, 'register']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -32,7 +31,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 /*
 |--------------------------------------------------------------------------
-| ADMIN DASHBOARD
+| ADMIN DASHBOARD (SEMUA ROLE)
 |--------------------------------------------------------------------------
 */
 Route::get('/admin', [DashboardController::class, 'index'])
@@ -49,26 +48,47 @@ Route::prefix('admin')
     ->middleware(['auth', 'checkrole:admin,staff_desa,kepala_desa'])
     ->group(function () {
 
-    // USERS (ADMIN ONLY)
-    Route::resource('users', UserController::class)
-        ->middleware('checkrole:admin');
+    /*
+    |=========================
+    | ADMIN ONLY
+    |=========================
+    */
+    Route::middleware('checkrole:admin')->group(function () {
+        Route::resource('users', UserController::class);
+        Route::resource('warga', WargaController::class);
+    });
 
-    // DATA UMUM
+    /*
+    |=========================
+    | DATA UMUM (SEMUA ROLE)
+    |=========================
+    */
     Route::resource('keluarga_kk', KeluargaKKController::class);
-    Route::resource('warga', WargaController::class);
     Route::resource('anggota_keluarga', AnggotaKeluargaController::class);
 
-    // PERISTIWA
+    /*
+    |=========================
+    | PERISTIWA (SEMUA ROLE)
+    |=========================
+    */
     Route::resource('peristiwa_kelahiran', PeristiwaKelahiranController::class);
     Route::resource('peristiwa_kematian', PeristiwaKematianController::class);
     Route::resource('peristiwa_pindah', PeristiwaPindahController::class);
 
-    // MEDIA
+    /*
+    |=========================
+    | MEDIA
+    |=========================
+    */
     Route::delete('media/delete/{media_id}',
         [PeristiwaKelahiranController::class, 'deleteMedia']
     )->name('media.delete');
 
-    // PROFILE (LOGIN USER)
+    /*
+    |=========================
+    | PROFILE (LOGIN USER)
+    |=========================
+    */
     Route::resource('profile', ProfileController::class)
         ->only(['index', 'edit', 'update']);
 });
