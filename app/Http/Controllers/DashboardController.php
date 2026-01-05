@@ -17,30 +17,30 @@ class DashboardController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-{
-    // Hitung total data
-    $jumlahWarga = Warga::count();
-    $jumlahUser = User::count();
-    $jumlahKelahiran = PeristiwaKelahiran::count();
-    $jumlahKematian = PeristiwaKematian::count();
-    $jumlahPindah = PeristiwaPindah::count();
-    $jumlahKK = KeluargaKK::count(); // Total Kartu Keluarga
-    $jumlahAnggota = AnggotaKeluarga::count(); // Total anggota keluarga
+    {
+        // Hitung total data
+        $jumlahWarga = Warga::count();
+        $jumlahUser = User::count();
+        $jumlahKelahiran = PeristiwaKelahiran::count();
+        $jumlahKematian = PeristiwaKematian::count();
+        $jumlahPindah = PeristiwaPindah::count();
+        $jumlahKK = KeluargaKK::count(); // Total Kartu Keluarga
+        $jumlahAnggota = AnggotaKeluarga::count(); // Total anggota keluarga
 
-    // Ambil 5 data terbaru
-    $kelahiranTerbaru = PeristiwaKelahiran::with('anak', 'ibu')->latest()->take(5)->get();
-    $kematianTerbaru = PeristiwaKematian::with('warga')->latest()->take(5)->get();
-    $pindahTerbaru = PeristiwaPindah::with('warga')->latest()->take(5)->get();
-    $kkTerbaru = KeluargaKK::latest()->take(5)->get();
-    $anggotaTerbaru = AnggotaKeluarga::with('warga', 'kk')->latest()->take(5)->get();
+        // Ambil 5 data terbaru
+        $kelahiranTerbaru = PeristiwaKelahiran::with('anak', 'ibu')->latest()->take(5)->get();
+        $kematianTerbaru = PeristiwaKematian::with('warga')->latest()->take(5)->get();
+        $pindahTerbaru = PeristiwaPindah::with('warga')->latest()->take(5)->get();
+        $kkTerbaru = KeluargaKK::latest()->take(5)->get();
+        $anggotaTerbaru = AnggotaKeluarga::with('warga', 'kk')->latest()->take(5)->get();
 
-    return view('dashboard', compact(
-        'jumlahWarga', 'jumlahUser', 'jumlahKelahiran',
-        'jumlahKematian', 'jumlahPindah', 'jumlahKK', 'jumlahAnggota',
-        'kelahiranTerbaru', 'kematianTerbaru', 'pindahTerbaru',
-        'kkTerbaru', 'anggotaTerbaru'
-    ));
-}
+        return view('dashboard', compact(
+            'jumlahWarga', 'jumlahUser', 'jumlahKelahiran',
+            'jumlahKematian', 'jumlahPindah', 'jumlahKK', 'jumlahAnggota',
+            'kelahiranTerbaru', 'kematianTerbaru', 'pindahTerbaru',
+            'kkTerbaru', 'anggotaTerbaru'
+        ));
+    }
 
     /**
      * Show the form for creating a new resource.

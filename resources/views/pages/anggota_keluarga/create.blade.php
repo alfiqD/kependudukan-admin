@@ -38,7 +38,7 @@
                 <div class="form-group mb-3">
                     <label for="hubungan">Hubungan Dalam Keluarga</label>
                     <input type="text" name="hubungan" id="hubungan" class="form-control"
-                        placeholder="Contoh: Ayah, Ibu, Anak">
+                        placeholder="Contoh: kepala keluarga, istri, anak, orang tua, lainnya">
                 </div>
 
                 {{-- Tombol sejajar kanan bawah --}}
@@ -48,5 +48,5 @@
                         </div>
             </form>
         </div>
-    </div>     
+    </div>
 @endsection

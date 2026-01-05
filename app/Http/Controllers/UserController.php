@@ -102,11 +102,11 @@ class UserController extends Controller
         $user = User::findOrFail($id);
 
         $validated = $request->validate([
-        'name'   => 'required|string|max:255',
-        'email'  => 'required|email|unique:users,email,' . $id,
-        'role'   => 'required|in:admin,staff_desa,kepala_desa',
-        'password' => 'nullable|confirmed|min:6',
-        'avatar' => 'nullable|image|mimes:jpg,jpeg,png|max:2048', // <- ubah sini
+            'name'   => 'required|string|max:255',
+            'email'  => 'required|email|unique:users,email,' . $id,
+            'role'   => 'required|in:admin,staff_desa,kepala_desa',
+            'password' => 'nullable|confirmed|min:6',
+            'avatar' => 'nullable|image|mimes:jpg,jpeg,png|max:2048', // <- ubah sini
     ]);
 
         // password optional
@@ -126,10 +126,7 @@ class UserController extends Controller
                 $request->file('avatar')
                         ->store('media/profile_pictures', 'public');
         }
-
         $user->update($validated);
-
-
         return redirect()->route('users.index')
             ->with('success', 'Data berhasil diperbarui.');
         }
@@ -142,9 +139,9 @@ class UserController extends Controller
         $user = User::findOrFail($id);
 
         if ($user->avatar &&
-    Storage::disk('public')->exists($user->avatar)) {
-    Storage::disk('public')->delete($user->avatar);
-}
+        Storage::disk('public')->exists($user->avatar)) {
+        Storage::disk('public')->delete($user->avatar);
+    }
 
         $user->delete();
 
@@ -170,23 +167,23 @@ class UserController extends Controller
     public function updateProfilePicture(Request $request)
     {
         $request->validate([
-    'avatar' => 'required|image|mimes:jpg,jpeg,png|max:2048', // <- ubah nama field
-]);
+            'avatar' => 'required|image|mimes:jpg,jpeg,png|max:2048', // <- ubah nama field
+        ]);
 
-$user = Auth::user();
+        $user = Auth::user();
 
-if ($user->avatar && Storage::disk('public')->exists($user->avatar)) {
-    Storage::disk('public')->delete($user->avatar);
-}
+        if ($user->avatar && Storage::disk('public')->exists($user->avatar)) {
+            Storage::disk('public')->delete($user->avatar);
+        }
 
-$path = $request->file('avatar')
-                ->store('media/profile_pictures', 'public');
+        $path = $request->file('avatar')
+                        ->store('media/profile_pictures', 'public');
 
-$user->update([
-    'avatar' => $path,
-]);
+        $user->update([
+            'avatar' => $path,
+        ]);
 
 
-        return back()->with('success', 'Foto profil berhasil diperbarui');
-    }
-}
+                return back()->with('success', 'Foto profil berhasil diperbarui');
+            }
+        }

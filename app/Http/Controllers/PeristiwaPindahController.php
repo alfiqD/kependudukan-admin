@@ -32,9 +32,6 @@ class PeristiwaPindahController extends Controller
         return view('pages.peristiwa_pindah.create', compact('wargaList'));
     }
 
-    // ===========================
-    // STORE
-    // ===========================
     public function store(Request $request)
     {
         $request->validate([
@@ -88,9 +85,6 @@ class PeristiwaPindahController extends Controller
         return view('pages.peristiwa_pindah.edit', compact('pindah', 'wargaList', 'media'));
     }
 
-    // ===========================
-    // UPDATE
-    // ===========================
     public function update(Request $request, $id)
     {
         $pindah = PeristiwaPindah::findOrFail($id);

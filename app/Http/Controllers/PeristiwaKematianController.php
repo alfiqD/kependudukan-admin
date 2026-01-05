@@ -32,9 +32,6 @@ class PeristiwaKematianController extends Controller
         return view('pages.peristiwa_kematian.create', compact('wargaList'));
     }
 
-    // ===========================
-    // STORE
-    // ===========================
     public function store(Request $request)
     {
         $request->validate([
@@ -92,9 +89,6 @@ class PeristiwaKematianController extends Controller
         return view('pages.peristiwa_kematian.edit', compact('kematian', 'wargaList', 'media'));
     }
 
-    // ===========================
-    // UPDATE
-    // ===========================
     public function update(Request $request, $id)
     {
         $kematian = PeristiwaKematian::findOrFail($id);

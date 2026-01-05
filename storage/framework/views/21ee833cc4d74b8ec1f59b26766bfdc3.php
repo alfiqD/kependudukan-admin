@@ -36,7 +36,7 @@
                 <div class="form-group mb-3">
                     <label for="hubungan">Hubungan Dalam Keluarga</label>
                     <input type="text" name="hubungan" id="hubungan" class="form-control"
-                        placeholder="Contoh: Ayah, Ibu, Anak">
+                        placeholder="Contoh: kepala keluarga, istri, anak, orang tua, lainnya">
                 </div>
 
                 
@@ -46,7 +46,7 @@
                         </div>
             </form>
         </div>
-    </div>     
+    </div>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.admin.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\alfiqlaravel\laragon-6.0-minimal\www\kependudukan-admin\resources\views/pages/anggota_keluarga/create.blade.php ENDPATH**/ ?>

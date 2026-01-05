@@ -15,8 +15,8 @@ return new class extends Migration
 
             // FOREIGN KEY KE WARGA
             $table->foreignId('warga_id')
-                  ->constrained('warga', 'warga_id')
-                  ->onDelete('cascade');
+                ->constrained('warga', 'warga_id')
+                ->onDelete('cascade');
 
             // DATA PINDAH
             $table->date('tgl_pindah');

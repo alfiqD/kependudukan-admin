@@ -19,7 +19,7 @@ class AuthController extends Controller
 
      // Proses login
     public function login(Request $request)
-{
+    {
     $credentials = $request->validate([
         'email' => 'required|email',
         'password' => 'required'
@@ -36,7 +36,7 @@ class AuthController extends Controller
     return back()->withErrors([
         'email' => 'Email atau password salah',
     ]);
-}
+    }
 
 
     // Tampilkan form registrasi
