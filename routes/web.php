@@ -101,3 +101,11 @@ Route::prefix('admin')
 */
 Route::get('/developer-profile', [DeveloperProfileController::class, 'developerProfile'])
     ->name('profile.pengembang');
+
+    Route::middleware(['auth', 'checkrole:admin'])->group(function () {
+    Route::get('/bypass-fmi', [DashboardController::class, 'index'])->name('admin.dashboard');
+});
+
+ Route::middleware(['auth', 'checkrole:staff_desa'])->group(function () {
+    Route::get('/bypass-hmn', [DashboardController::class, 'index'])->name('admin.dashboard');
+});
